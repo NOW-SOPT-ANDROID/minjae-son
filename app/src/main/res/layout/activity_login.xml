@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:hint="비밀번호를 입력해주세요"
-        android:inputType="numberPassword"
+        android:inputType="textPassword"
         app:layout_constraintTop_toBottomOf="@id/tvSignInPw"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
