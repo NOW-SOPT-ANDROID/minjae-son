@@ -31,7 +31,6 @@ android {
         jvmTarget = '17'
     }
 
-    // 바인딩 블럭 추가
     buildFeatures {
         viewBinding true
     }
