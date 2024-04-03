@@ -9,7 +9,9 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="SIGN UP"
         tools:layout_editor_absoluteX="97dp"
         tools:layout_editor_absoluteY="201dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
