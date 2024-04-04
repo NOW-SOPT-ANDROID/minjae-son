@@ -17,8 +17,12 @@ class LoginActivity: AppCompatActivity() {
 
         binding.btnSignIn.setOnClickListener {
             if (binding.etSignInId.text.length in 6..10) {
-                if (binding.etSignInPw.text.length in 8..12)
+                if (binding.etSignInPw.text.length in 8..12) {
                     Toast.makeText(this, "로그인 되었습니다!", Toast.LENGTH_SHORT).show()
+
+                    val intent = Intent(this,MainActivity::class.java) // 회원가입 페이지로 이동
+                    startActivity(intent)
+                }
                 else
                     Toast.makeText(this, "비밀번호가 잘못되었습니다", Toast.LENGTH_SHORT).show()
             }
