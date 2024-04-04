@@ -3,6 +3,7 @@ package com.sopt.now
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.sopt.now.databinding.ActivitySignupBinding
@@ -27,13 +28,14 @@ class SignUpActivity : AppCompatActivity() {
             if (binding.etSignUpId.text.length in 6..10 &&
                 binding.etSignUpPw.text.length in 8..12 &&
                 binding.etSignUpName.text.isNotEmpty()) {
-                Snackbar.make(it,"회원가입 완료!",Snackbar.LENGTH_SHORT).show()
+
+                Toast.makeText(this,"회원가입 성공", Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(this,LoginActivity::class.java) // 회원가입 성공 시, 로그인 화면으로 이동
                 startActivity(intent)
             }
             else
-                Snackbar.make(it,"회원가입 실패",Snackbar.LENGTH_SHORT).show()
+                Toast.makeText(this,"회원가입 실패",Toast.LENGTH_SHORT).show()
         }
     }
 
