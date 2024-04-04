@@ -27,11 +27,17 @@ class SignUpActivity : AppCompatActivity() {
 
             if (binding.etSignUpId.text.length in 6..10 &&
                 binding.etSignUpPw.text.length in 8..12 &&
-                binding.etSignUpName.text.isNotEmpty()) {
+                binding.etSignUpName.text.isNotEmpty() &&
+                binding.etSignUpPlace.text.isNotEmpty()) {
 
                 Toast.makeText(this,"회원가입 성공", Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(this,LoginActivity::class.java) // 회원가입 성공 시, 로그인 화면으로 이동
+                // 회원가입 정보 넘기기
+                intent.putExtra("ID",binding.etSignUpId.text.toString())
+                intent.putExtra("PW",binding.etSignUpPw.text.toString())
+                intent.putExtra("Name",binding.etSignUpName.text.toString())
+                intent.putExtra("Place",binding.etSignUpPlace.text.toString())
                 startActivity(intent)
             }
             else
