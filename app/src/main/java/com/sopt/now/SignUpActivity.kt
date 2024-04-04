@@ -40,6 +40,11 @@ class SignUpActivity : AppCompatActivity() {
                 intent.putExtra("Place",binding.etSignUpPlace.text.toString())
                 startActivity(intent)
             }
+            else if (binding.etSignUpId.text.isEmpty() || binding.etSignUpPw.text.isEmpty() ||
+                     binding.etSignUpName.text.isEmpty() || binding.etSignUpPlace.text.isEmpty() ) {
+                Toast.makeText(this, "입력하지 않은 정보가 있습니다.", Toast.LENGTH_SHORT).show()
+            }
+
             else
                 Toast.makeText(this,"회원가입 실패",Toast.LENGTH_SHORT).show()
         }
