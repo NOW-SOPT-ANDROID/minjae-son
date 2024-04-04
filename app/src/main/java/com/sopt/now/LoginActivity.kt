@@ -1,5 +1,6 @@
 package com.sopt.now
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +22,11 @@ class LoginActivity: AppCompatActivity() {
                     Snackbar.make(it,"비밀번호가 잘못되었습니다.",Snackbar.LENGTH_SHORT).show()
             }
             else Snackbar.make(it,"아이디가 잘못되었습니다.",Snackbar.LENGTH_SHORT).show()
+        }
+
+        binding.btnJoin.setOnClickListener {
+            val intent = Intent(this,SignUpActivity::class.java) // 회원가입 페이지로 이동
+            startActivity(intent)
         }
     }
 }
