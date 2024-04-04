@@ -16,8 +16,8 @@ class LoginActivity: AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnSignIn.setOnClickListener {
-            if (binding.etSignInId.text.length >= 6) {
-                if (binding.etSignInPw.text.length in 6..9)
+            if (binding.etSignInId.text.length in 6..10) {
+                if (binding.etSignInPw.text.length in 8..12)
                     Toast.makeText(this, "로그인 되었습니다!", Toast.LENGTH_SHORT).show()
                 else
                     Toast.makeText(this, "비밀번호가 잘못되었습니다", Toast.LENGTH_SHORT).show()
