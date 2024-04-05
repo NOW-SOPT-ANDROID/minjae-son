@@ -3,13 +3,14 @@ package com.sopt.now.compose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Face
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
@@ -22,7 +23,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -31,20 +31,21 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sopt.now.compose.ui.theme.NOWSOPTAndroidTheme
+import java.util.jar.Attributes.Name
 
-class SignInActivity : ComponentActivity() {
+class SignUpActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             NOWSOPTAndroidTheme {
-                SignInScreen()
+                SignUpScreen()
             }
         }
     }
 }
 @Preview(showBackground = true)
 @Composable
-fun SignInScreen() {
+fun SignUpScreen() {
     NOWSOPTAndroidTheme {
         Column(
             modifier = Modifier
@@ -53,10 +54,12 @@ fun SignInScreen() {
             // 상태 관리를 위한 state 변수 선언
             var ID by remember { mutableStateOf("") }
             var PW by remember { mutableStateOf("") }
+            var Name by remember { mutableStateOf("") }
+            var Place by remember { mutableStateOf("") }
 
             // Title
             Text(
-                text = "Welcome to SOPT!",
+                text = "SIGN UP",
                 modifier = Modifier.padding(10.dp),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
@@ -87,15 +90,29 @@ fun SignInScreen() {
                 singleLine = true, // 텍스트 단일 줄 제한
             )
 
-            // Sign In
-            Button(
-                onClick = { /* 클릭 시 수행될 동작 */ }, // 버튼 클릭 시 실행되는 콜백 함수
-                modifier = Modifier.padding(10.dp),   // 버튼의 크기, 위치, 패딩 등을 조정
-                colors = ButtonDefaults.buttonColors(containerColor = Color.Green),
-                shape = RoundedCornerShape(8.dp)
-            ) {
-                Text("로그인 하기",color=Color.Black)
-            }
+            // Name(닉네임) 입력 필드
+            TextField(
+                value = Name,
+                onValueChange = { Name = it },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp),
+                label = { Text("닉네임을 입력하세요") }, // 입력 전 보이는 텍스트
+                leadingIcon = { Icon(Icons.Filled.Face, contentDescription = "Name Icon") }, // 시작 부분 아이콘
+                singleLine = true, // 텍스트 단일 줄 제한
+            )
+
+            // Place(거주지) 입력 필드
+            TextField(
+                value = Place,
+                onValueChange = { Place = it },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp),
+                label = { Text("거주지를 입력하세요") }, // 입력 전 보이는 텍스트
+                leadingIcon = { Icon(Icons.Filled.Home, contentDescription = "Place Icon") }, // 시작 부분 아이콘
+                singleLine = true, // 텍스트 단일 줄 제한
+            )
 
             // Sign Up
             Button(
@@ -104,7 +121,7 @@ fun SignInScreen() {
                 colors = ButtonDefaults.buttonColors(containerColor = Color.Green),
                 shape = RoundedCornerShape(8.dp)
             ) {
-                Text("회원가입 하기",color=Color.Black)
+                Text("회원가입 하기",color= Color.Black)
             }
         }
     }
