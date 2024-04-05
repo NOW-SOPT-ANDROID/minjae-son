@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sopt.now.databinding.ActivityLoginBinding
+import com.sopt.now.databinding.ActivityMainBinding
 
 class LoginActivity: AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -25,6 +26,10 @@ class LoginActivity: AppCompatActivity() {
                     Toast.makeText(this, "로그인 되었습니다!", Toast.LENGTH_SHORT).show()
 
                     val intent = Intent(this,MainActivity::class.java) // 메인 페이지로 이동
+                    intent.putExtra("ID",userId)
+                    intent.putExtra("PW",userPw)
+                    intent.putExtra("Name",userName)
+                    intent.putExtra("Place",userPlace)
                     startActivity(intent)
                 }
                 else
