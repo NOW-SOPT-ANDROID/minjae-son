@@ -70,9 +70,9 @@ fun SignInScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(10.dp),
-                label = { Text("아이디를 입력하세요") }, // 입력 전 보이는 텍스트
+                label = { Text("아이디를 입력하세요") },                                    // 입력 전 보이는 텍스트
                 leadingIcon = { Icon(Icons.Filled.Person, contentDescription = "ID Icon") }, // 시작 부분 아이콘
-                singleLine = true, // 텍스트 단일 줄 제한
+                singleLine = true,                                                           // 텍스트 단일 줄 제한
             )
 
             // PW 입력 필드
@@ -82,15 +82,15 @@ fun SignInScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(10.dp),
-                label = { Text("비밀번호를 입력하세요") }, // 입력 전 보이는 텍스트
-                leadingIcon = { Icon(Icons.Filled.Lock, contentDescription = "PW Icon") }, // 시작 부분 아이콘
-                singleLine = true, // 텍스트 단일 줄 제한
+                label = { Text("비밀번호를 입력하세요") },
+                leadingIcon = { Icon(Icons.Filled.Lock, contentDescription = "PW Icon") },
+                singleLine = true,
             )
 
             // Sign In
             Button(
-                onClick = { /* 클릭 시 수행될 동작 */ }, // 버튼 클릭 시 실행되는 콜백 함수
-                modifier = Modifier.padding(10.dp),   // 버튼의 크기, 위치, 패딩 등을 조정
+                onClick = { /* 클릭 시 수행될 동작 */ },                                  // 버튼 클릭 시 실행되는 콜백 함수
+                modifier = Modifier.padding(10.dp),                                   // 버튼의 크기, 위치, 패딩 등을 조정
                 colors = ButtonDefaults.buttonColors(containerColor = Color.Green),
                 shape = RoundedCornerShape(8.dp)
             ) {
@@ -99,8 +99,8 @@ fun SignInScreen() {
 
             // Sign Up
             Button(
-                onClick = { /* 클릭 시 수행될 동작 */ }, // 버튼 클릭 시 실행되는 콜백 함수
-                modifier = Modifier.padding(10.dp),   // 버튼의 크기, 위치, 패딩 등을 조정
+                onClick = { /* 클릭 시 수행될 동작 */ },
+                modifier = Modifier.padding(10.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Color.Green),
                 shape = RoundedCornerShape(8.dp)
             ) {
