@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.sopt.now.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -12,6 +13,24 @@ class HomeFragment : Fragment() {
     private val binding get() = requireNotNull(_binding) {
         "바인딩 객체 생성 해라"
     }
+
+    private val mockFriendList = listOf<Friend>(
+        Friend(
+            profileImage = R.drawable.ic_person_black_24,
+            name = "이의경",
+            selfDescription = "다들 빨리 끝내고 뒤풀이 가고 싶지? ㅎㅎ 아직 반도 안왔어 ^&^",
+        ),
+        Friend(
+            profileImage = R.drawable.ic_person_black_24,
+            name = "우상욱",
+            selfDescription = "나보다 안드 잘하는 사람 있으면 나와봐",
+        ),
+        Friend(
+            profileImage = R.drawable.ic_person_black_24,
+            name = "배지현",
+            selfDescription = "표정 풀자 ^^",
+        ),
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,7 +43,12 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // 기존 액티비티의 onCreate에 작성했던 init로직을 이제는 여기에 작성합니다.
+        val friendAdapter = FriendAdapter()
+        binding.rvFriends.run {
+            adapter = friendAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+        friendAdapter.setFriendList(mockFriendList)
     }
 
     override fun onDestroyView() {

@@ -21,10 +21,10 @@ class MainActivity : AppCompatActivity() {
         val userName = intent.getStringExtra("Name")
         val userPlace = intent.getStringExtra("Place")
 
-        binding.tvMainName.text = userName
-        binding.tvMainShowId.text = userId
-        binding.tvMainShowPw.text = userPw
-        binding.tvMainShowPlace.text = userPlace
+//        binding.tvMainName.text = userName
+//        binding.tvMainShowId.text = userId
+//        binding.tvMainShowPw.text = userPw
+//        binding.tvMainShowPlace.text = userPlace
 
         val currentFragment = supportFragmentManager.findFragmentById(binding.fcvHome.id)
         if (currentFragment == null) {
@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
                 .add(binding.fcvHome.id, HomeFragment())
                 .commit()
         }
+        clickBottomNavigation()
     }
     private fun clickBottomNavigation() {
         binding.bnvHome.setOnItemSelectedListener{
