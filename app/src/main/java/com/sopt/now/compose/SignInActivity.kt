@@ -27,6 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,85 +39,83 @@ class SignInActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            NOWSOPTAndroidTheme {
-                SignInScreen()
-            }
+            SignInScreen()
         }
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 fun SignInScreen() {
-    NOWSOPTAndroidTheme {
-        Column(
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 30.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Top
+    ) {
+        var ID by remember { mutableStateOf("") }
+        var PW by remember { mutableStateOf("") }
+        val context = LocalContext.current
+
+        // Title
+        Text(
+            text = stringResource(R.string.txt_SignIn_Title),
+            modifier = Modifier.padding(10.dp),
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center
+        )
+
+        // ID 입력 필드
+        TextField(
+            value = ID,
+            onValueChange = { ID = it },
             modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = 30.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Top) {
-            // 상태 관리를 위한 state 변수 선언
-            var ID by remember { mutableStateOf("") }
-            var PW by remember { mutableStateOf("") }
-            val context = LocalContext.current
+                .fillMaxWidth()
+                .padding(10.dp),
+            label = { Text(stringResource(R.string.tf_SignIn_Id_Hint)) },
+            leadingIcon = { Icon(Icons.Filled.Person, contentDescription = "ID Icon") },
+            singleLine = true,
+        )
 
-            // Title
-            Text(
-                text = "Welcome to SOPT!",
-                modifier = Modifier.padding(10.dp),
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center
-            )
+        // PW 입력 필드
+        TextField(
+            value = PW,
+            onValueChange = { PW = it },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(10.dp),
+            label = { Text(stringResource(R.string.tf_SignIn_Pw_Hint)) },
+            leadingIcon = { Icon(Icons.Filled.Lock, contentDescription = "PW Icon") },
+            singleLine = true,
+        )
 
-            // ID 입력 필드
-            TextField(
-                value = ID,
-                onValueChange = { ID = it },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(10.dp),
-                label = { Text("아이디를 입력하세요") },                                    // 입력 전 보이는 텍스트
-                leadingIcon = { Icon(Icons.Filled.Person, contentDescription = "ID Icon") }, // 시작 부분 아이콘
-                singleLine = true,                                                           // 텍스트 단일 줄 제한
-            )
+        // Sign In
+        Button(
+            onClick = {
+                val intent = Intent(context, MainActivity::class.java)
+                context.startActivity(intent)
+            },
+            modifier = Modifier.padding(10.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Green),
+            shape = RoundedCornerShape(8.dp)
+        ) {
+            Text(stringResource(R.string.btn_SignIn_SignIn), color = Color.Black)
+        }
 
-            // PW 입력 필드
-            TextField(
-                value = PW,
-                onValueChange = { PW = it },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(10.dp),
-                label = { Text("비밀번호를 입력하세요") },
-                leadingIcon = { Icon(Icons.Filled.Lock, contentDescription = "PW Icon") },
-                singleLine = true,
-            )
-
-            // Sign In
-            Button(
-                onClick = {
-                    val intent = Intent(context, MainActivity::class.java)
-                    context.startActivity(intent)
-                },
-                modifier = Modifier.padding(10.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Color.Green),
-                shape = RoundedCornerShape(8.dp)
-            ) {
-                Text("로그인 하기",color=Color.Black)
-            }
-
-            // Sign Up
-            Button(
-                onClick = {
-                    val intent = Intent(context, SignUpActivity::class.java)
-                    context.startActivity(intent)
-                },
-                modifier = Modifier.padding(10.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Color.Green),
-                shape = RoundedCornerShape(8.dp)
-            ) {
-                Text("회원가입 하기",color=Color.Black)
-            }
+        // Sign Up
+        Button(
+            onClick = {
+                val intent = Intent(context, SignUpActivity::class.java)
+                context.startActivity(intent)
+            },
+            modifier = Modifier.padding(10.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Green),
+            shape = RoundedCornerShape(8.dp)
+        ) {
+            Text(stringResource(R.string.btn_SignIn_SignUp), color = Color.Black)
         }
     }
+
 }

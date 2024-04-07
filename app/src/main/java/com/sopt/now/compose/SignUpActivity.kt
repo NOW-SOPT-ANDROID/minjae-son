@@ -30,6 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -72,7 +73,7 @@ fun SignUpScreen() {
 
             // Title
             Text(
-                text = "SIGN UP",
+                text = stringResource(R.string.txt_SignUp_Title),
                 modifier = Modifier.padding(10.dp),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
@@ -87,7 +88,7 @@ fun SignUpScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(10.dp),
-                label = { Text("아이디를 입력하세요") },
+                label = { Text(stringResource(R.string.tf_SignUp_Id_Hint)) },
                 leadingIcon = { Icon(Icons.Filled.Person, contentDescription = "ID Icon") },
                 singleLine = true,
             )
@@ -100,7 +101,7 @@ fun SignUpScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(10.dp),
-                label = { Text("비밀번호를 입력하세요") },
+                label = { Text(stringResource(R.string.tf_SignUp_Pw_Hint)) },
                 leadingIcon = { Icon(Icons.Filled.Lock, contentDescription = "PW Icon") },
                 singleLine = true,
             )
@@ -113,7 +114,7 @@ fun SignUpScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(10.dp),
-                label = { Text("닉네임을 입력하세요") },
+                label = { Text(stringResource(R.string.tf_SignUp_Name_Hint)) },
                 leadingIcon = { Icon(Icons.Filled.Face, contentDescription = "Name Icon") },
                 singleLine = true,
             )
@@ -125,7 +126,7 @@ fun SignUpScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(10.dp),
-                label = { Text("거주지를 입력하세요") },
+                label = { Text(stringResource(R.string.tf_SignUp_Place_Hint)) },
                 leadingIcon = { Icon(Icons.Filled.Home, contentDescription = "Place Icon") },
                 singleLine = true,
             )
@@ -140,7 +141,7 @@ fun SignUpScreen() {
                 colors = ButtonDefaults.buttonColors(containerColor = Color.Green),
                 shape = RoundedCornerShape(8.dp)
             ) {
-                Text("회원가입 하기",color= Color.Black)
+                Text(stringResource(R.string.btn_SignUp_SignUp),color= Color.Black)
             }
         }
     }

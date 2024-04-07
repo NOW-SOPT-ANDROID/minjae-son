@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">NOW SOPT Android</string>
+
+<!--    SignInActivity-->
+    <string name="txt_SignIn_Title">Welcome to SOPT!</string>
+    <string name="tf_SignIn_Id_Hint">아이디를 입력하세요</string>
+    <string name="tf_SignIn_Pw_Hint">비밀번호를 입력하세요</string>
+    <string name="btn_SignIn_SignIn">로그인 하기</string>
+    <string name="btn_SignIn_SignUp">회원가입 하기</string>
+
+<!--    SignUpActivity-->
+    <string name="txt_SignUp_Title">SIGN UP</string>
+    <string name="tf_SignUp_Id_Hint">아이디를 입력하세요</string>
+    <string name="tf_SignUp_Pw_Hint">비밀번호를 입력하세요</string>
+    <string name="tf_SignUp_Name_Hint">닉네임을 입력하세요</string>
+    <string name="tf_SignUp_Place_Hint">거주지를 입력하세요</string>
+    <string name="btn_SignUp_SignUp">회원가입 하기</string>
+    <string name="txt_Main_Title">SOPT에 온걸 환영해!</string>
+    <string name="txt_Main_ShowName">SYAAINN</string>
+    <string name="txt_Main_Id">아이디</string>
+    <string name="txt_Main_ShowId">alswo0831</string>
+    <string name="txt_Main_Pw">비밀번호</string>
+    <string name="txt_Main_ShowPw">88888888</string>
+    <string name="txt_Main_Place">거주지</string>
+    <string name="txt_Main_ShowPlace">Hongdae</string>
 </resources>

@@ -29,6 +29,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -60,7 +61,7 @@ fun MainScreen() {
 
             // Title
             Text(
-                text = "SOPT에 온걸 환영해!",
+                text = stringResource(R.string.txt_Main_Title),
                 modifier = Modifier.padding(10.dp),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
@@ -69,7 +70,7 @@ fun MainScreen() {
 
             // Name
             Text(
-                text = "SYAAINN",
+                text = stringResource(R.string.txt_Main_ShowName),
                 modifier = Modifier.padding(10.dp),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
@@ -78,7 +79,7 @@ fun MainScreen() {
 
             // ID
             Text(
-                text = "아이디",
+                text = stringResource(R.string.txt_Main_Id),
                 modifier = Modifier.padding(10.dp),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
@@ -87,7 +88,7 @@ fun MainScreen() {
 
             // ID Info
             Text(
-                text = "alswo0831",
+                text = stringResource(R.string.txt_Main_ShowId),
                 modifier = Modifier.padding(10.dp),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
@@ -96,7 +97,7 @@ fun MainScreen() {
 
             // PW
             Text(
-                text = "비밀번호",
+                text = stringResource(R.string.txt_Main_Pw),
                 modifier = Modifier.padding(10.dp),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
@@ -105,7 +106,7 @@ fun MainScreen() {
 
             // PW Info
             Text(
-                text = "88888888",
+                text = stringResource(R.string.txt_Main_ShowPw),
                 modifier = Modifier.padding(10.dp),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
@@ -114,7 +115,7 @@ fun MainScreen() {
 
             // Place
             Text(
-                text = "거주지",
+                text = stringResource(R.string.txt_Main_Place),
                 modifier = Modifier.padding(10.dp),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
@@ -123,7 +124,7 @@ fun MainScreen() {
 
             // Place Info
             Text(
-                text = "Hongdae",
+                text = stringResource(R.string.txt_Main_ShowPlace),
                 modifier = Modifier.padding(10.dp),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
