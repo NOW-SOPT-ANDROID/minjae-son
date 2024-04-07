@@ -15,6 +15,8 @@
     <string name="tf_SignUp_Name_Hint">닉네임을 입력하세요</string>
     <string name="tf_SignUp_Place_Hint">거주지를 입력하세요</string>
     <string name="btn_SignUp_SignUp">회원가입 하기</string>
+
+<!--    MainActivity-->
     <string name="txt_Main_Title">SOPT에 온걸 환영해!</string>
     <string name="txt_Main_ShowName">SYAAINN</string>
     <string name="txt_Main_Id">아이디</string>
