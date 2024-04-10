@@ -3,133 +3,40 @@ package com.sopt.now.compose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Face
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.sopt.now.compose.ui.theme.NOWSOPTAndroidTheme
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.sopt.now.compose.screen.SignInScreen
+import com.sopt.now.compose.screen.SignUpScreen
+import com.sopt.now.compose.screen.MyPageScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            NOWSOPTAndroidTheme {
-                MainScreen()
+            val navController = rememberNavController()
+
+            NavHost(navController = navController, startDestination = "SignIn") {
+                composable("SignIn?ID={ID}&PW={PW}&Name={Name}&Place={Place}") { backStackEntry ->
+                    SignInScreen(
+                        navController = navController,
+                        ID = backStackEntry.arguments?.getString("ID") ?: "",
+                        PW = backStackEntry.arguments?.getString("PW") ?: "",
+                        Name = backStackEntry.arguments?.getString("Name") ?: "",
+                        Place = backStackEntry.arguments?.getString("Place") ?: ""
+                    )
+                }
+                composable("SignUp") {
+                    SignUpScreen(navController = navController)
+                }
+                composable("MyPage?ID={InputID}&PW={InputPW}&Name={Name}&Place={Place}") {backStackEntry ->
+                    MyPageScreen(
+                        ID = backStackEntry.arguments?.getString("InputID") ?: "",
+                        PW = backStackEntry.arguments?.getString("InputPW") ?: "",
+                        Name = backStackEntry.arguments?.getString("Name") ?: "",
+                        Place = backStackEntry.arguments?.getString("Place") ?: "")
+                }
             }
-        }
-    }
-}
-@Preview(showBackground = true)
-@Composable
-fun MainScreen() {
-    NOWSOPTAndroidTheme {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = 30.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Top
-        ) {
-
-            // Title
-            Text(
-                text = stringResource(R.string.txt_Main_Title),
-                modifier = Modifier.padding(10.dp),
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center
-            )
-
-            // Name
-            Text(
-                text = stringResource(R.string.txt_Main_ShowName),
-                modifier = Modifier.padding(10.dp),
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center
-            )
-
-            // ID
-            Text(
-                text = stringResource(R.string.txt_Main_Id),
-                modifier = Modifier.padding(10.dp),
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center
-            )
-
-            // ID Info
-            Text(
-                text = stringResource(R.string.txt_Main_ShowId),
-                modifier = Modifier.padding(10.dp),
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center
-            )
-
-            // PW
-            Text(
-                text = stringResource(R.string.txt_Main_Pw),
-                modifier = Modifier.padding(10.dp),
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center
-            )
-
-            // PW Info
-            Text(
-                text = stringResource(R.string.txt_Main_ShowPw),
-                modifier = Modifier.padding(10.dp),
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center
-            )
-
-            // Place
-            Text(
-                text = stringResource(R.string.txt_Main_Place),
-                modifier = Modifier.padding(10.dp),
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center
-            )
-
-            // Place Info
-            Text(
-                text = stringResource(R.string.txt_Main_ShowPlace),
-                modifier = Modifier.padding(10.dp),
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center
-            )
         }
     }
 }
