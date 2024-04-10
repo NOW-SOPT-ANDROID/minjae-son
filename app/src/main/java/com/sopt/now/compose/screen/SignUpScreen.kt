@@ -73,7 +73,7 @@ fun SignUpScreen(navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(10.dp),
-            label = { Text(stringResource(R.string.tf_SignUp_Id_Hint)) },
+            label = { Text(stringResource(R.string.tf_SignUp_ID_Hint)) },
             leadingIcon = { Icon(Icons.Filled.Person, contentDescription = "ID Icon") },
             singleLine = true,
         )
@@ -88,7 +88,7 @@ fun SignUpScreen(navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(10.dp),
-            label = { Text(stringResource(R.string.tf_SignUp_Pw_Hint)) },
+            label = { Text(stringResource(R.string.tf_SignUp_PW_Hint)) },
             leadingIcon = { Icon(Icons.Filled.Lock, contentDescription = "PW Icon") },
             singleLine = true,
         )
