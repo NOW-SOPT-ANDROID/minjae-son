@@ -118,6 +118,9 @@ fun isSignUpValid(
         showToast(context, R.string.toast_SignUp_ValidSignUp)
         navController.navigate("SignIn?ID=$ID&PW=$PW&Name=$Name&Place=$Place")
     }
+
+    else
+        showToast(context, R.string.toast_SignUp_InvalidSignUp)
 }
 
 @Composable

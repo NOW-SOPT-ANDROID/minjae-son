@@ -51,6 +51,10 @@ fun SignUpScreen(navController: NavController) {
         var isNameValid by remember { mutableStateOf(false) }
         val context = LocalContext.current
 
+        val MIN_ID_LENGTH = 6
+        val MAX_ID_LENGTH = 10
+        val MIN_PW_LENGTH = 8
+        val MAX_PW_LENGTH = 12
 
         // Title
         Text(
@@ -65,7 +69,7 @@ fun SignUpScreen(navController: NavController) {
             ID,
             { newID ->
                 ID = newID
-                isIDValid = newID.trim().length in 6..10
+                isIDValid = newID.trim().length in MIN_ID_LENGTH..MAX_ID_LENGTH
             },
             stringResource(R.string.tf_SignUp_ID_Hint),
             Icons.Filled.Person
@@ -75,7 +79,7 @@ fun SignUpScreen(navController: NavController) {
             PW,
             { newPW ->
                 PW = newPW
-                isPWValid = newPW.trim().length in 8..12
+                isPWValid = newPW.trim().length in MIN_PW_LENGTH..MAX_PW_LENGTH
             },
             stringResource(R.string.tf_SignUp_PW_Hint),
             Icons.Filled.Lock,

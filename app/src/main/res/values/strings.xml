@@ -13,12 +13,13 @@
 
 <!--    SignUpActivity-->
     <string name="txt_SignUp_Title">SIGN UP</string>
-    <string name="tf_SignUp_ID_Hint">아이디를 입력하세요</string>
-    <string name="tf_SignUp_PW_Hint">비밀번호를 입력하세요</string>
+    <string name="tf_SignUp_ID_Hint">아이디를 입력하세요 (6~10자)</string>
+    <string name="tf_SignUp_PW_Hint">비밀번호를 입력하세요(8~12자)</string>
     <string name="tf_SignUp_Name_Hint">닉네임을 입력하세요</string>
     <string name="tf_SignUp_Place_Hint">거주지를 입력하세요</string>
     <string name="btn_SignUp_SignUp">회원가입 하기</string>
     <string name="toast_SignUp_ValidSignUp">회원가입 성공</string>
+    <string name="toast_SignUp_InvalidSignUp">회원가입 실패</string>
 
 <!--    MainActivity-->
     <string name="txt_MyPage_Title">SOPT에 온걸 환영해!</string>
