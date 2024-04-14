@@ -51,6 +51,7 @@ fun SignUpScreen(navController: NavController) {
         var isNameValid by remember { mutableStateOf(false) }
         val context = LocalContext.current
 
+
         // Title
         Text(
             text = stringResource(R.string.txt_SignUp_Title),
@@ -61,41 +62,41 @@ fun SignUpScreen(navController: NavController) {
         )
 
         SignUpTextField(
-            value = ID,
-            onValueChange = { newID ->
+            ID,
+            { newID ->
                 ID = newID
                 isIDValid = newID.trim().length in 6..10
             },
-            label = stringResource(R.string.tf_SignUp_ID_Hint),
-            leadingIcon = Icons.Filled.Person
+            stringResource(R.string.tf_SignUp_ID_Hint),
+            Icons.Filled.Person
         )
 
         SignUpTextField(
-            value = PW,
-            onValueChange = { newPW ->
+            PW,
+            { newPW ->
                 PW = newPW
                 isPWValid = newPW.trim().length in 8..12
             },
-            label = stringResource(R.string.tf_SignUp_PW_Hint),
-            leadingIcon = Icons.Filled.Lock,
+            stringResource(R.string.tf_SignUp_PW_Hint),
+            Icons.Filled.Lock,
             isPassword = true
         )
 
         SignUpTextField(
-            value = Name,
-            onValueChange = { newName ->
+            Name,
+            { newName ->
                 Name = newName
                 isNameValid = newName.trim().isNotEmpty()
             },
-            label = stringResource(R.string.tf_SignUp_Name_Hint),
-            leadingIcon = Icons.Filled.Face
+            stringResource(R.string.tf_SignUp_Name_Hint),
+            Icons.Filled.Face
         )
 
         SignUpTextField(
-            value = Place,
-            onValueChange = { newPlace -> Place = newPlace },
-            label = stringResource(R.string.tf_SignUp_Place_Hint),
-            leadingIcon = Icons.Filled.Home
+            Place,
+            { newPlace -> Place = newPlace },
+            stringResource(R.string.tf_SignUp_Place_Hint),
+            Icons.Filled.Home
         )
 
         SOPTOutlinedButton(

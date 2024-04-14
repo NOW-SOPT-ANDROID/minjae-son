@@ -21,8 +21,8 @@
     <string name="toast_SignUp_ValidSignUp">회원가입 성공</string>
 
 <!--    MainActivity-->
-    <string name="txt_Main_Title">SOPT에 온걸 환영해!</string>
-    <string name="txt_Main_Id">아이디</string>
-    <string name="txt_Main_Pw">비밀번호</string>
-    <string name="txt_Main_Place">거주지</string>
+    <string name="txt_MyPage_Title">SOPT에 온걸 환영해!</string>
+    <string name="txt_MyPage_Id">아이디</string>
+    <string name="txt_MyPage_Pw">비밀번호</string>
+    <string name="txt_MyPage_Place">거주지</string>
 </resources>

@@ -12,9 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
@@ -24,6 +27,7 @@ fun SignInTextField(
     label: String,
     leadingIcon: ImageVector,
     modifier: Modifier = Modifier,
+    isPassword: Boolean = false,
 ) {
     TextField(
         value = value,
@@ -34,6 +38,7 @@ fun SignInTextField(
         label = { Text(label) },
         leadingIcon = { Icon(leadingIcon, contentDescription = null) },
         singleLine = true,
+        visualTransformation = if (isPassword) PasswordVisualTransformation() else VisualTransformation.None
     )
 }
 
@@ -113,6 +118,18 @@ fun isSignUpValid(
         showToast(context, R.string.toast_SignUp_ValidSignUp)
         navController.navigate("SignIn?ID=$ID&PW=$PW&Name=$Name&Place=$Place")
     }
+}
+
+@Composable
+fun MyPageText(
+    text: String
+) {
+    Text(
+        text = text,
+        modifier = Modifier.padding(10.dp),
+        fontSize = 20.sp,
+        fontWeight = FontWeight.Bold,
+        textAlign = TextAlign.Center)
 }
 
 fun showToast(context: Context, message: Int) {

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -42,7 +43,7 @@ fun SignInScreen(
         val context = LocalContext.current
 
         Text(
-            text = stringResource(id = R.string.txt_SignIn_Title ),
+            text = stringResource(id = R.string.txt_SignIn_Title),
             modifier = Modifier.padding(10.dp),
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
@@ -59,8 +60,9 @@ fun SignInScreen(
         SignInTextField(
             inputPW,
             { inputPW = it },
-            stringResource(id = R.string.tf_SignUp_PW_Hint ),
-            Icons.Filled.Person
+            stringResource(id = R.string.tf_SignUp_PW_Hint),
+            Icons.Filled.Lock,
+            isPassword = true
         )
 
         SOPTOutlinedButton(
