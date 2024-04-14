@@ -1,13 +1,17 @@
 package com.sopt.now.compose.screen
 
+import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -15,17 +19,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.sopt.now.compose.R
 import com.sopt.now.compose.SOPTOutlinedButton
-import com.sopt.now.compose.SignInTextField
-import com.sopt.now.compose.isSignInValid
+import com.sopt.now.compose.showToast
 
 @Composable
 fun SignInScreen(
@@ -76,5 +82,61 @@ fun SignInScreen(
             { navController.navigate("SignUp") },
             true
         )
+    }
+}
+
+@Composable
+fun SignInTextField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    label: String,
+    leadingIcon: ImageVector,
+    modifier: Modifier = Modifier,
+    isPassword: Boolean = false,
+) {
+    TextField(
+        value = value,
+        onValueChange = onValueChange,
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(10.dp),
+        label = { Text(label) },
+        leadingIcon = { Icon(leadingIcon, contentDescription = null) },
+        singleLine = true,
+        visualTransformation = if (isPassword) PasswordVisualTransformation() else VisualTransformation.None
+    )
+}
+
+fun isSignInValid(
+    navController: NavController,
+    context: Context,
+    inputID: String,
+    inputPW: String,
+    ID: String,
+    PW: String,
+    Name: String,
+    Place: String
+) {
+    when {
+        (inputID.isEmpty()) -> {
+            showToast(context, R.string.toast_SignIn_InvalidSignIn_IDBlank)
+        }
+
+        (inputPW.isEmpty()) -> {
+            showToast(context, R.string.toast_SignIn_InvalidSignIn_PWBlank)
+        }
+
+        (inputID == ID && inputPW == PW) -> {
+            showToast(context, R.string.toast_SignIn_ValidSignIn)
+            navController.navigate("MyPage?ID=$inputID&PW=$inputPW&Name=$Name&Place=$Place")
+        }
+
+        (inputID != ID) -> {
+            showToast(context, R.string.toast_SignIn_InvalidID)
+        }
+
+        (inputPW != PW) -> {
+            showToast(context, R.string.toast_SignIn_InvalidPW)
+        }
     }
 }

@@ -1,15 +1,19 @@
 package com.sopt.now.compose.screen
 
+import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -17,17 +21,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.sopt.now.compose.R
 import com.sopt.now.compose.SOPTOutlinedButton
-import com.sopt.now.compose.SignUpTextField
-import com.sopt.now.compose.isSignUpValid
+import com.sopt.now.compose.showToast
 
 @Composable
 fun SignUpScreen(navController: NavController) {
@@ -116,4 +122,54 @@ fun SignUpScreen(navController: NavController) {
             true
         )
     }
+}
+
+@Composable
+fun SignUpTextField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    label: String,
+    leadingIcon: ImageVector?,
+    modifier: Modifier = Modifier,
+    isPassword: Boolean = false
+) {
+    TextField(
+        value = value,
+        onValueChange = onValueChange,
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(10.dp),
+        label = { Text(label) },
+        leadingIcon = if (leadingIcon != null) {
+            { Icon(leadingIcon, contentDescription = null) }
+        } else {
+            null
+        },
+        singleLine = true,
+        visualTransformation = if (isPassword) PasswordVisualTransformation() else VisualTransformation.None
+    )
+}
+
+fun isSignUpValid(
+    navController: NavController,
+    context: Context,
+    ID: String,
+    IDValid: Boolean,
+    PW: String,
+    PWValid: Boolean,
+    Name: String,
+    NameValid: Boolean,
+    Place: String
+) {
+    if (ID.isEmpty()||PW.isEmpty()||
+        Name.isEmpty()||Place.isEmpty())
+        showToast(context, R.string.toast_SignUp_InvalidSignUp_Blank)
+
+    else if (IDValid && PWValid && NameValid) {
+        showToast(context, R.string.toast_SignUp_ValidSignUp)
+        navController.navigate("SignIn?ID=$ID&PW=$PW&Name=$Name&Place=$Place")
+    }
+
+    else
+        showToast(context,R.string.toast_SignUp_InvalidSignUp)
 }
