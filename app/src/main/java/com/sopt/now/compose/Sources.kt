@@ -129,7 +129,8 @@ fun MyPageText(
         modifier = Modifier.padding(10.dp),
         fontSize = 20.sp,
         fontWeight = FontWeight.Bold,
-        textAlign = TextAlign.Center)
+        textAlign = TextAlign.Center
+    )
 }
 
 fun showToast(context: Context, message: Int) {
