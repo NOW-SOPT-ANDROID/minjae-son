@@ -88,6 +88,14 @@ fun isSignInValid(
     Place: String
 ) {
     when {
+        (inputID.isEmpty()) -> {
+            showToast(context, R.string.toast_SignIn_InvalidSignIn_IDBlank)
+        }
+
+        (inputPW.isEmpty()) -> {
+            showToast(context, R.string.toast_SignIn_InvalidSignIn_PWBlank)
+        }
+
         (inputID == ID && inputPW == PW) -> {
             showToast(context, R.string.toast_SignIn_ValidSignIn)
             navController.navigate("MyPage?ID=$inputID&PW=$inputPW&Name=$Name&Place=$Place")
@@ -118,9 +126,11 @@ fun isSignUpValid(
         showToast(context, R.string.toast_SignUp_ValidSignUp)
         navController.navigate("SignIn?ID=$ID&PW=$PW&Name=$Name&Place=$Place")
     }
-
+    else if (ID.trim().isEmpty()||PW.trim().isEmpty()||
+        Name.trim().isEmpty()||Place.trim().isEmpty())
+        showToast(context, R.string.toast_SignUp_InvalidSignUp_Blank)
     else
-        showToast(context, R.string.toast_SignUp_InvalidSignUp)
+        showToast(context,R.string.toast_SignUp_InvalidSignUp)
 }
 
 @Composable

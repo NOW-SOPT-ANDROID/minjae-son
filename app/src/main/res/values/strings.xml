@@ -10,6 +10,8 @@
     <string name="toast_SignIn_ValidSignIn">로그인 성공</string>
     <string name="toast_SignIn_InvalidID">아이디가 잘못되었습니다</string>
     <string name="toast_SignIn_InvalidPW">비밀번호가 잘못되었습니다</string>
+    <string name="toast_SignIn_InvalidSignIn_IDBlank">아이디를 입력해주세요</string>
+    <string name="toast_SignIn_InvalidSignIn_PWBlank">비밀번호를 입력해주세요</string>
 
 <!--    SignUpActivity-->
     <string name="txt_SignUp_Title">SIGN UP</string>
@@ -20,6 +22,7 @@
     <string name="btn_SignUp_SignUp">회원가입 하기</string>
     <string name="toast_SignUp_ValidSignUp">회원가입 성공</string>
     <string name="toast_SignUp_InvalidSignUp">회원가입 실패</string>
+    <string name="toast_SignUp_InvalidSignUp_Blank">입력하지 않은 정보가 있습니다</string>
 
 <!--    MainActivity-->
     <string name="txt_MyPage_Title">SOPT에 온걸 환영해!</string>
