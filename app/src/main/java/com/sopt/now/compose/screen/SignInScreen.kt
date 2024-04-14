@@ -53,14 +53,14 @@ fun SignInScreen(
         SignInTextField(
             inputID,
             { inputID = it },
-            stringResource(id = R.string.tf_SignUp_ID_Hint),
+            stringResource(id = R.string.tf_SignIn_ID_Hint),
             Icons.Filled.Person
         )
 
         SignInTextField(
             inputPW,
             { inputPW = it },
-            stringResource(id = R.string.tf_SignUp_PW_Hint),
+            stringResource(id = R.string.tf_SignIn_PW_Hint),
             Icons.Filled.Lock,
             isPassword = true
         )
