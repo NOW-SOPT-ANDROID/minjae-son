@@ -122,13 +122,15 @@ fun isSignUpValid(
     NameValid: Boolean,
     Place: String
 ) {
-    if (IDValid && PWValid && NameValid) {
+    if (ID.isEmpty()||PW.isEmpty()||
+        Name.isEmpty()||Place.isEmpty())
+        showToast(context, R.string.toast_SignUp_InvalidSignUp_Blank)
+
+    else if (IDValid && PWValid && NameValid) {
         showToast(context, R.string.toast_SignUp_ValidSignUp)
         navController.navigate("SignIn?ID=$ID&PW=$PW&Name=$Name&Place=$Place")
     }
-    else if (ID.trim().isEmpty()||PW.trim().isEmpty()||
-        Name.trim().isEmpty()||Place.trim().isEmpty())
-        showToast(context, R.string.toast_SignUp_InvalidSignUp_Blank)
+
     else
         showToast(context,R.string.toast_SignUp_InvalidSignUp)
 }
