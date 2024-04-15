@@ -3,44 +3,41 @@ package com.sopt.now.compose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.sopt.now.compose.ui.theme.NOWSOPTAndroidTheme
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.sopt.now.compose.screen.MyPageScreen
+import com.sopt.now.compose.screen.SignInScreen
+import com.sopt.now.compose.screen.SignUpScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            NOWSOPTAndroidTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
+            val navController = rememberNavController()
+
+            NavHost(navController = navController, startDestination = "SignIn") {
+                composable("SignIn?ID={ID}&PW={PW}&Name={Name}&Place={Place}") { backStackEntry ->
+                    SignInScreen(
+                        navController = navController,
+                        ID = backStackEntry.arguments?.getString("ID") ?: "",
+                        PW = backStackEntry.arguments?.getString("PW") ?: "",
+                        Name = backStackEntry.arguments?.getString("Name") ?: "",
+                        Place = backStackEntry.arguments?.getString("Place") ?: ""
+                    )
+                }
+                composable("SignUp") {
+                    SignUpScreen(navController = navController)
+                }
+                composable("MyPage?ID={InputID}&PW={InputPW}&Name={Name}&Place={Place}") { backStackEntry ->
+                    MyPageScreen(
+                        ID = backStackEntry.arguments?.getString("InputID") ?: "",
+                        PW = backStackEntry.arguments?.getString("InputPW") ?: "",
+                        Name = backStackEntry.arguments?.getString("Name") ?: "",
+                        Place = backStackEntry.arguments?.getString("Place") ?: ""
+                    )
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    NOWSOPTAndroidTheme {
-        Greeting("Android")
     }
 }
