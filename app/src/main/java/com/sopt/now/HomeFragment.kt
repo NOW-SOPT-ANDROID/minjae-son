@@ -10,9 +10,10 @@ import com.sopt.now.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
-    private val binding get() = requireNotNull(_binding) {
-        "바인딩 객체 생성 해라"
-    }
+    private val binding
+        get() = requireNotNull(_binding) {
+            "바인딩 객체 생성 해라"
+        }
 
     private val mockFriendList = listOf<Friend>(
         Friend(
