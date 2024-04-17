@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                             putString("Place", userPlace)
                         }
                     }
-                    replaceFragment(MyPageFragment())
+                    replaceFragment(myPageFragment)
                     true
                 }
 

@@ -14,27 +14,31 @@ class MyPageFragment : Fragment() {
             "바인딩 객체 생성 해라"
         }
 
+    private var userId: String? = null
+    private var userPw: String? = null
+    private var userName: String? = null
+    private var userPlace: String? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMypageBinding.inflate(inflater, container, false)
+        userId = arguments?.getString("ID")
+        userPw = arguments?.getString("PW")
+        userName = arguments?.getString("Name")
+        userPlace = arguments?.getString("Place")
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val userId = arguments?.getString("ID")
-        val userPw = arguments?.getString("PW")
-        val userName = arguments?.getString("Name")
-        val userPlace = arguments?.getString("Place")
-
-        binding.tvMyPageId.text = userId
-        binding.tvMyPagePw.text = userPw
-        binding.tvMyPageName.text = userName
-        binding.tvMyPagePlace.text = userPlace
+        binding.tvMyPageShowId.text = userId
+        binding.tvMyPageShowPw.text = userPw
+        binding.tvMyPageShowName.text = userName
+        binding.tvMyPageShowPlace.text = userPlace
     }
 
     override fun onDestroyView() {
