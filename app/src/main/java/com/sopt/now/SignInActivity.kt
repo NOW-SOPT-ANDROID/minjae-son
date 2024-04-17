@@ -1,5 +1,6 @@
 package com.sopt.now
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -19,30 +20,7 @@ class SignInActivity : AppCompatActivity() {
         val userPlace = intent.getStringExtra("Place")
 
         binding.btnSignInSignIn.setOnClickListener {
-            if (binding.etSignInId.text.toString() == userId) {
-                if (binding.etSignInPw.text.toString() == userPw) {
-                    Toast.makeText(
-                        this,
-                        getString(R.string.toast_SignInActivity_ValidSignIn), Toast.LENGTH_SHORT
-                    ).show()
-
-                    val intent = Intent(this, MainActivity::class.java) // 메인 페이지로 이동
-                    intent.putExtra("ID", userId)
-                    intent.putExtra("PW", userPw)
-                    intent.putExtra("Name", userName)
-                    intent.putExtra("Place", userPlace)
-                    startActivity(intent)
-                } else
-                    Toast.makeText(
-                        this,
-                        getString(R.string.toast_SignInActivity_InvalidPw), Toast.LENGTH_SHORT
-                    ).show()
-            } else {
-                Toast.makeText(
-                    this,
-                    getString(R.string.toast_SignInActivity_InvalidId), Toast.LENGTH_SHORT
-                ).show()
-            }
+            IsSignInValid(userId, userPw, userName, userPlace)
         }
 
         binding.btnSignInSignUp.setOnClickListener {
@@ -50,4 +28,32 @@ class SignInActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    private fun IsSignInValid(userId: String?, userPw: String?, userName: String?, userPlace: String?) {
+        with(binding) {
+            if (binding.etSignInId.text.toString() == userId) {
+                if (binding.etSignInPw.text.toString() == userPw) {
+                    showToast(getString(R.string.toast_SignInActivity_ValidSignIn))
+                    navigateToMainActivity(userId, userPw, userName, userPlace)
+                } else showToast(getString(R.string.toast_SignInActivity_InvalidPw))
+            }
+            else showToast(getString(R.string.toast_SignInActivity_InvalidId))
+        }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun navigateToMainActivity(userId: String?, userPw: String?, userName: String?, userPlace: String?) {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("ID", userId)
+        intent.putExtra("PW", userPw)
+        intent.putExtra("Name", userName)
+        intent.putExtra("Place", userPlace)
+        startActivity(intent)
+    }
 }
+
+
+
