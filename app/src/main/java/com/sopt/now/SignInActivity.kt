@@ -20,7 +20,8 @@ class SignInActivity : AppCompatActivity() {
         val userPlace = intent.getStringExtra("Place")
 
         binding.btnSignInSignIn.setOnClickListener {
-            IsSignInValid(userId, userPw, userName, userPlace)
+            if (isSignInValid(userId, userPw))
+                navigateToMainActivity(userId, userPw, userName, userPlace)
         }
 
         binding.btnSignInSignUp.setOnClickListener {
@@ -29,15 +30,20 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
-    private fun IsSignInValid(userId: String?, userPw: String?, userName: String?, userPlace: String?) {
-        with(binding) {
-            if (binding.etSignInId.text.toString() == userId) {
-                if (binding.etSignInPw.text.toString() == userPw) {
-                    showToast(getString(R.string.toast_SignInActivity_ValidSignIn))
-                    navigateToMainActivity(userId, userPw, userName, userPlace)
-                } else showToast(getString(R.string.toast_SignInActivity_InvalidPw))
+    private fun isSignInValid(userId: String?, userPw: String?) : Boolean {
+        return when {
+            binding.etSignInId.text.toString() == userId -> {
+                showToast(R.string.toast_SignInActivity_InvalidId.toString())
+                false
             }
-            else showToast(getString(R.string.toast_SignInActivity_InvalidId))
+            binding.etSignInPw.text.toString() != userPw -> {
+                showToast(R.string.toast_SignInActivity_InvalidPw.toString())
+                false
+            }
+            else -> {
+                showToast(R.string.toast_SignInActivity_ValidSignIn.toString())
+                true
+            }
         }
     }
 
