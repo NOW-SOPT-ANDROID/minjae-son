@@ -20,32 +20,29 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnSignUpSignUp.setOnClickListener {
-            if (isSignUpValid())
-                navigateToSignInActivity()
+            isSignUpValid()
         }
     }
 
-    private fun isSignUpValid(): Boolean {
+    private fun isSignUpValid() {
 
         val id = binding.etSignUpId.text.toString()
         val pw = binding.etSignUpPw.text.toString()
         val name = binding.etSignUpName.text.toString()
         val place = binding.etSignUpPlace.text.toString()
 
-        return when {
+        when {
             id.isEmpty() || pw.isEmpty() || name.isEmpty() || place.isEmpty() -> {
-                showToast(R.string.toast_SignUpActivity_InvalidSignUp_Blank.toString())
-                false
+                showToast(getString(R.string.toast_SignUpActivity_InvalidSignUp_Blank))
             }
 
             id.length !in ID_MIN_LENGTH..ID_MAX_LENGTH || pw.length !in PW_MIN_LENGTH..PW_MAX_LENGTH -> {
-                showToast(R.string.toast_SignUpActivity_InvalidSignUp_Blank.toString())
-                false
+                showToast(getString(R.string.toast_SignUpActivity_InvalidSignUp_Blank))
             }
 
             else -> {
-                showToast(R.string.toast_SignUpActivity_ValidSignUp.toString())
-                true
+                showToast(getString(R.string.toast_SignUpActivity_ValidSignUp))
+                navigateToSignInActivity()
             }
         }
     }

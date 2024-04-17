@@ -20,29 +20,26 @@ class SignInActivity : AppCompatActivity() {
         val userPlace = intent.getStringExtra("Place")
 
         binding.btnSignInSignIn.setOnClickListener {
-            if (isSignInValid(userId, userPw))
-                navigateToMainActivity(userId, userPw, userName, userPlace)
+            isSignInValid(userId, userPw, userName, userPlace)
         }
 
         binding.btnSignInSignUp.setOnClickListener {
-            val intent = Intent(this, SignUpActivity::class.java) // 회원가입 페이지로 이동
+            val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }
     }
 
-    private fun isSignInValid(userId: String?, userPw: String?) : Boolean {
-        return when {
+    private fun isSignInValid(userId: String?, userPw: String?, userName: String?, userPlace: String?) {
+        when {
             binding.etSignInId.text.toString() == userId -> {
-                showToast(R.string.toast_SignInActivity_InvalidId.toString())
-                false
+                showToast(getString(R.string.toast_SignInActivity_InvalidId))
             }
             binding.etSignInPw.text.toString() != userPw -> {
-                showToast(R.string.toast_SignInActivity_InvalidPw.toString())
-                false
+                showToast(getString(R.string.toast_SignInActivity_InvalidPw))
             }
             else -> {
-                showToast(R.string.toast_SignInActivity_ValidSignIn.toString())
-                true
+                showToast(getString(R.string.toast_SignInActivity_ValidSignIn))
+                navigateToMainActivity(userId, userPw, userName, userPlace)
             }
         }
     }
