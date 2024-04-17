@@ -25,6 +25,16 @@ class MyPageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val userId = arguments?.getString("ID")
+        val userPw = arguments?.getString("PW")
+        val userName = arguments?.getString("Name")
+        val userPlace = arguments?.getString("Place")
+
+        binding.tvMyPageId.text = userId
+        binding.tvMyPagePw.text = userPw
+        binding.tvMyPageName.text = userName
+        binding.tvMyPagePlace.text = userPlace
     }
 
     override fun onDestroyView() {

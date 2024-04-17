@@ -31,7 +31,7 @@ class SignInActivity : AppCompatActivity() {
 
     private fun isSignInValid(userId: String?, userPw: String?, userName: String?, userPlace: String?) {
         when {
-            binding.etSignInId.text.toString() == userId -> {
+            binding.etSignInId.text.toString() != userId -> {
                 showToast(getString(R.string.toast_SignInActivity_InvalidId))
             }
             binding.etSignInPw.text.toString() != userPw -> {
