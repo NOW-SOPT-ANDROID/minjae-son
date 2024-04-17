@@ -17,22 +17,17 @@ class MainActivity : AppCompatActivity() {
         val userName = intent.getStringExtra("Name")
         val userPlace = intent.getStringExtra("Place")
 
-//        binding.tvMainName.text = userName
-//        binding.tvMainShowId.text = userId
-//        binding.tvMainShowPw.text = userPw
-//        binding.tvMainShowPlace.text = userPlace
-
-        val currentFragment = supportFragmentManager.findFragmentById(binding.fcvHome.id)
+        val currentFragment = supportFragmentManager.findFragmentById(binding.fcvMain.id)
         if (currentFragment == null) {
             supportFragmentManager.beginTransaction()
-                .add(binding.fcvHome.id, HomeFragment())
+                .add(binding.fcvMain.id, HomeFragment())
                 .commit()
         }
-        clickBottomNavigation()
+        clickBottomNavigation(userId,userPw,userName,userPlace)
     }
 
-    private fun clickBottomNavigation() {
-        binding.bnvHome.setOnItemSelectedListener {
+    private fun clickBottomNavigation(userId:String?,userPw:String?,userName:String?,userPlace:String?) {
+        binding.bnvMain.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_home -> {
                     replaceFragment(HomeFragment())
@@ -45,6 +40,14 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.menu_mypage -> {
+                    val myPageFragment = MyPageFragment().apply {
+                        arguments = Bundle().apply {
+                            putString("ID", userId)
+                            putString("PW", userPw)
+                            putString("Name", userName)
+                            putString("Place", userPlace)
+                        }
+                    }
                     replaceFragment(MyPageFragment())
                     true
                 }
@@ -54,11 +57,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Activity에서 Fragment를 다뤄야 하니 supportFragmentManager를 사용합니다.
-// 트렌젝션을 시작하고 replace 메서드를 통해 Fragment를 교체합니다.
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-            .replace(binding.fcvHome.id, fragment)
+            .replace(binding.fcvMain.id, fragment)
             .commit()
     }
 }
