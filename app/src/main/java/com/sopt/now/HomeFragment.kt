@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.viewModels
 import com.sopt.now.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -15,23 +15,7 @@ class HomeFragment : Fragment() {
             "바인딩 객체 생성 해라"
         }
 
-    private val mockFriendList = listOf<Friend>(
-        Friend(
-            profileImage = R.drawable.ic_person_black_24,
-            name = "이의경",
-            selfDescription = "다들 빨리 끝내고 뒤풀이 가고 싶지? ㅎㅎ 아직 반도 안왔어 ^&^",
-        ),
-        Friend(
-            profileImage = R.drawable.ic_person_black_24,
-            name = "우상욱",
-            selfDescription = "나보다 안드 잘하는 사람 있으면 나와봐",
-        ),
-        Friend(
-            profileImage = R.drawable.ic_person_black_24,
-            name = "배지현",
-            selfDescription = "표정 풀자 ^^",
-        ),
-    )
+    private val viewModel by viewModels<HomeViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,14 +26,13 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    //    onViewCreated는 생성된 뷰 구조를 활용하여 Fragment에 사용자 인터랙션을 구현하는 구현부입니다.
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val friendAdapter = FriendAdapter()
-        binding.rvFriends.run {
-            adapter = friendAdapter
-            layoutManager = LinearLayoutManager(requireContext())
-        }
-        friendAdapter.setFriendList(mockFriendList)
+
+        val friendAdapter = FriendAdapter(requireContext())
+        binding.rvFriends.adapter = friendAdapter
+        friendAdapter.setFriendList(viewModel.mockFriendList)
     }
 
     override fun onDestroyView() {

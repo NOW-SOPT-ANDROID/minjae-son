@@ -27,16 +27,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_home" />
 
-    <TextView
-        android:id="@+id/tvMainSopt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="SOPT HOME"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
