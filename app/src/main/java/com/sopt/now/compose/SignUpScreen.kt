@@ -1,4 +1,4 @@
-package com.sopt.now.compose.screen
+package com.sopt.now.compose
 
 import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
@@ -31,9 +31,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.sopt.now.compose.R
-import com.sopt.now.compose.SOPTOutlinedButton
-import com.sopt.now.compose.showToast
 
 @Composable
 fun SignUpScreen(navController: NavController) {
@@ -161,15 +158,13 @@ fun isSignUpValid(
     NameValid: Boolean,
     Place: String
 ) {
-    if (ID.isEmpty()||PW.isEmpty()||
-        Name.isEmpty()||Place.isEmpty())
+    if (ID.isEmpty() || PW.isEmpty() ||
+        Name.isEmpty() || Place.isEmpty()
+    )
         showToast(context, R.string.toast_SignUp_InvalidSignUp_Blank)
-
     else if (IDValid && PWValid && NameValid) {
         showToast(context, R.string.toast_SignUp_ValidSignUp)
         navController.navigate("SignIn?ID=$ID&PW=$PW&Name=$Name&Place=$Place")
-    }
-
-    else
-        showToast(context,R.string.toast_SignUp_InvalidSignUp)
+    } else
+        showToast(context, R.string.toast_SignUp_InvalidSignUp)
 }

@@ -1,4 +1,4 @@
-package com.sopt.now.compose.screen
+package com.sopt.now.compose.mypage
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -20,7 +20,6 @@ import com.sopt.now.compose.R
 
 @Composable
 fun MyPageScreen(ID: String, PW: String, Name: String, Place: String) {
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -28,13 +27,11 @@ fun MyPageScreen(ID: String, PW: String, Name: String, Place: String) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
-
-
-        Image(painter = painterResource(id = R.drawable.img_mypage_profile),
-              contentDescription = "Profile",
-              modifier = Modifier.size(300.dp)
+        Image(
+            painter = painterResource(id = R.drawable.img_mypage_profile),
+            contentDescription = "Profile",
+            modifier = Modifier.size(300.dp)
         )
-
         MyPageText(text = stringResource(R.string.txt_MyPage_Title))
         MyPageText(text = Name)
         MyPageText(text = stringResource(R.string.txt_MyPage_Id))
@@ -47,9 +44,7 @@ fun MyPageScreen(ID: String, PW: String, Name: String, Place: String) {
 }
 
 @Composable
-fun MyPageText(
-    text: String
-) {
+fun MyPageText(text: String) {
     Text(
         text = text,
         modifier = Modifier.padding(10.dp),

@@ -6,9 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.sopt.now.compose.screen.HomeScreen
-import com.sopt.now.compose.screen.SignInScreen
-import com.sopt.now.compose.screen.SignUpScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,10 +27,9 @@ class MainActivity : ComponentActivity() {
                     SignUpScreen(navController = navController)
                 }
                 composable("Home?ID={InputID}&PW={InputPW}&Name={Name}&Place={Place}") { backStackEntry ->
-                    HomeActivity(
-                        navController = navController,
-                        ID = backStackEntry.arguments?.getString("InputID") ?: "",
-                        PW = backStackEntry.arguments?.getString("InputPW") ?: "",
+                    ScaffoldExample(
+                        ID = backStackEntry.arguments?.getString("ID") ?: "",
+                        PW = backStackEntry.arguments?.getString("PW") ?: "",
                         Name = backStackEntry.arguments?.getString("Name") ?: "",
                         Place = backStackEntry.arguments?.getString("Place") ?: ""
                     )

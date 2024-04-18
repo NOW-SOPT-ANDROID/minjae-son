@@ -1,4 +1,4 @@
-package com.sopt.now.compose.screen
+package com.sopt.now.compose
 
 import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
@@ -29,12 +29,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.sopt.now.compose.R
-import com.sopt.now.compose.SOPTOutlinedButton
-import com.sopt.now.compose.showToast
 
 @Composable
-fun SignInScreen(navController: NavController, ID: String, PW: String, Name: String, Place: String) {
+fun SignInScreen(
+    navController: NavController,
+    ID: String,
+    PW: String,
+    Name: String,
+    Place: String
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -126,7 +129,7 @@ fun isSignInValid(
 
         (inputID == ID && inputPW == PW) -> {
             showToast(context, R.string.toast_SignIn_ValidSignIn)
-            navController.navigate("MyPage?ID=$inputID&PW=$inputPW&Name=$Name&Place=$Place")
+            navController.navigate("Home?ID=$inputID&PW=$inputPW&Name=$Name&Place=$Place")
         }
 
         (inputID != ID) -> {
