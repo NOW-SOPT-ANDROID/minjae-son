@@ -1,8 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/ivFriendProfile"
+            android:id="@+id/ivMyProfileProfile"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginVertical="10dp"
@@ -31,36 +32,48 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvFriendName"
+            android:id="@+id/tvMyProfileName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="이름"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/ivFriendProfile"
-            app:layout_constraintTop_toTopOf="@+id/ivFriendProfile" />
+            app:layout_constraintStart_toEndOf="@+id/ivMyProfileProfile"
+            app:layout_constraintTop_toTopOf="@+id/ivMyProfileProfile" />
 
         <TextView
-            android:id="@+id/tvFriendPlace"
+            android:id="@+id/tvMyProfilePlace"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="거주지"
             android:textAllCaps="false"
             android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/tvFriendName"
-            app:layout_constraintStart_toEndOf="@+id/tvFriendName"
-            app:layout_constraintTop_toTopOf="@+id/tvFriendName" />
+            app:layout_constraintBottom_toBottomOf="@+id/tvMyProfileName"
+            app:layout_constraintStart_toEndOf="@+id/tvMyProfileName"
+            app:layout_constraintTop_toTopOf="@+id/tvMyProfileName" />
 
         <TextView
-            android:id="@+id/tvFriendSelfDescription"
+            android:id="@+id/tvMyProfileSelfDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="자기소개"
-            app:layout_constraintBottom_toBottomOf="@+id/ivFriendProfile"
-            app:layout_constraintStart_toEndOf="@+id/ivFriendProfile" />
+            app:layout_constraintBottom_toBottomOf="@+id/ivMyProfileProfile"
+            app:layout_constraintStart_toEndOf="@+id/ivMyProfileProfile" />
+
+        <Switch
+            android:id="@+id/switchMyProfileEnable"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginEnd="8dp"
+            android:text="Enable"
+            app:layout_constraintBottom_toBottomOf="@+id/ivMyProfileProfile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivMyProfileProfile" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

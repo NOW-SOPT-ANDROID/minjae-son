@@ -17,14 +17,14 @@
 
     <ImageView
         android:id="@+id/imgMyPageProfile"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="0dp"
         android:layout_marginTop="110dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="50dp"
         app:layout_constraintTop_toTopOf="@+id/tvMyPageSopt"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background"
-        app:layout_constraintDimensionRatio="2:1"
+        app:srcCompat="@drawable/sonminjae_profile"
+        app:layout_constraintDimensionRatio="1:1"
         />
 
     <TextView

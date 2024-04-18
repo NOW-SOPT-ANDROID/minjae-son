@@ -30,8 +30,12 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val friendAdapter = FriendAdapter(requireContext())
-        binding.rvFriends.adapter = friendAdapter
-        friendAdapter.setFriendList(viewModel.mockFriendList)
+        binding.rvHomeFriends.adapter = friendAdapter
+        friendAdapter.setFriendList(viewModel.FriendList)
+
+        val myprofileAdapter = MyProfileAdapter(requireContext())
+        binding.rvHomeMyProfile.adapter = myprofileAdapter
+        myprofileAdapter.setMyProfileList(viewModel.MyProfileList)
     }
 
     override fun onDestroyView() {

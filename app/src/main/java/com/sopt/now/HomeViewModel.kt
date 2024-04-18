@@ -3,7 +3,17 @@ package com.sopt.now
 import androidx.lifecycle.ViewModel
 
 class HomeViewModel : ViewModel() {
-    val mockFriendList = listOf<Friend>(
+    val MyProfileList = listOf<MyProfile> (
+        MyProfile(
+            profileImage = R.drawable.sonminjae_profile,
+            name = "Son Minjae",
+            place = "Korea, Seoul",
+            selfDescription = "I can beat them all with one finger",
+            enable = true,
+        )
+    )
+
+    val FriendList = listOf<Friend>(
         Friend(
             profileImage = R.drawable.michaeljordan_profile,
             name = "Michael jordan",
