@@ -34,9 +34,7 @@ import com.sopt.now.compose.SOPTOutlinedButton
 import com.sopt.now.compose.showToast
 
 @Composable
-fun SignInScreen(
-    navController: NavController, ID: String, PW: String, Name: String, Place: String
-) {
+fun SignInScreen(navController: NavController, ID: String, PW: String, Name: String, Place: String) {
     Column(
         modifier = Modifier
             .fillMaxSize()
