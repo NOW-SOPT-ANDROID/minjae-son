@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sopt.now.databinding.ItemFriendBinding
 
 class FriendAdapter(requireContext: Context) : RecyclerView.Adapter<FriendViewHolder>() {
-    // 임시의 빈 리스트
+
     private var friendList: List<Friend> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FriendViewHolder {
@@ -17,7 +17,7 @@ class FriendAdapter(requireContext: Context) : RecyclerView.Adapter<FriendViewHo
     }
 
     override fun onBindViewHolder(holder: FriendViewHolder, position: Int) {
-        val friend = friendList.getOrNull(position) ?: return // ?? 이거뭔데
+        val friend = friendList.getOrNull(position) ?: return
         holder.onBind(friendList[position])
     }
 

@@ -21,12 +21,11 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View { // ? 를 지운이유 : binding.root 가 nullable 하지 않은걸 알아서
+    ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    //    onViewCreated는 생성된 뷰 구조를 활용하여 Fragment에 사용자 인터랙션을 구현하는 구현부입니다.
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

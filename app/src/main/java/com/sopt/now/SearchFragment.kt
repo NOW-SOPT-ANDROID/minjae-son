@@ -18,14 +18,13 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View { // ? 를 지운이유 : binding.root 가 nullable 하지 않은걸 알아서
+    ): View {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // 기존 액티비티의 onCreate에 작성했던 init로직을 이제는 여기에 작성합니다.
     }
 
     override fun onDestroyView() {
