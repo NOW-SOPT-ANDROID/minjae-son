@@ -1,9 +1,10 @@
-package com.sopt.now
+package com.sopt.now.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.sopt.now.R
 import com.sopt.now.databinding.ActivitySignupBinding
 
 class SignUpActivity : AppCompatActivity() {

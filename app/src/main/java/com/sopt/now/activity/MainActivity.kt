@@ -1,8 +1,12 @@
-package com.sopt.now
+package com.sopt.now.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.sopt.now.homeFragment.HomeFragment
+import com.sopt.now.myPageFragment.MyPageFragment
+import com.sopt.now.R
+import com.sopt.now.searchFragment.SearchFragment
 import com.sopt.now.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -30,6 +34,12 @@ class MainActivity : AppCompatActivity() {
         binding.bnvMain.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_home -> {
+                    val homeFragment = HomeFragment().apply {
+                        arguments = Bundle().apply {
+                            putString("Name", userName)
+                            putString("Place", userPlace)
+                        }
+                    }
                     replaceFragment(HomeFragment())
                     true
                 }
