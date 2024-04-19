@@ -4,16 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.sopt.now.homeFragment.homeViewHolder.FriendViewHolder
-import com.sopt.now.homeFragment.homeViewHolder.MyProfileViewHolder
 import com.sopt.now.databinding.ItemFriendBinding
 import com.sopt.now.databinding.ItemMyprofileBinding
+import com.sopt.now.homeFragment.homeViewHolder.FriendViewHolder
+import com.sopt.now.homeFragment.homeViewHolder.MyProfileViewHolder
 
 class HomeProfileAdapter() : RecyclerView.Adapter<ViewHolder>() {
 
     private lateinit var myProfile: HomeViewObject.MyProfile
     private var friendList: List<HomeViewObject.FriendProfile> = emptyList()
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
 
         return when (viewType) {
@@ -52,7 +52,10 @@ class HomeProfileAdapter() : RecyclerView.Adapter<ViewHolder>() {
         return friendList.size + 1
     }
 
-    fun setProfileList(myProfile: HomeViewObject.MyProfile, friendProfileList: List<HomeViewObject.FriendProfile>) {
+    fun setProfileList(
+        myProfile: HomeViewObject.MyProfile,
+        friendProfileList: List<HomeViewObject.FriendProfile>
+    ) {
         this.myProfile = myProfile
         this.friendList = friendProfileList.toList()
         notifyDataSetChanged()

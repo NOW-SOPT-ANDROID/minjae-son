@@ -17,8 +17,6 @@ class HomeFragment : Fragment() {
             "바인딩 객체 생성 해라"
         }
     private val viewModel by viewModels<HomeViewModel>()
-    //    private var userName: String? = null
-    //    private var userPlace: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,7 +34,7 @@ class HomeFragment : Fragment() {
             adapter = homeProfiledAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
-        homeProfiledAdapter.setProfileList(viewModel.myProfile,viewModel.friendProfileList)
+        homeProfiledAdapter.setProfileList(viewModel.mockMyProfile, viewModel.mockFriendProfileList)
     }
 
     override fun onDestroyView() {

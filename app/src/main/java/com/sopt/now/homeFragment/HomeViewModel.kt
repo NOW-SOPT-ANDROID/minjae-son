@@ -5,14 +5,14 @@ import com.sopt.now.R
 
 class HomeViewModel : ViewModel() {
 
-    val myProfile = HomeViewObject.MyProfile(
+    val mockMyProfile = HomeViewObject.MyProfile(
         profileImage = R.drawable.sonminjae_profile,
         name = "Son minjae",
         place = "Korea, Seoul",
         selfDescription = "i can win",
         enable = true,
     )
-    val friendProfileList = listOf(
+    val mockFriendProfileList = listOf(
         HomeViewObject.FriendProfile(
             profileImage = R.drawable.michaeljordan_profile,
             name = "Michael jordan",
