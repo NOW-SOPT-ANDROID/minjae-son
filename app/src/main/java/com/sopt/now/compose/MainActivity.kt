@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
                     SignUpScreen(navController = navController)
                 }
                 composable("Home?ID={ID}&PW={PW}&Name={Name}&Place={Place}") { backStackEntry ->
-                    ScaffoldExample(
+                    Scaffold(
                         ID = backStackEntry.arguments?.getString("ID") ?: "",
                         PW = backStackEntry.arguments?.getString("PW") ?: "",
                         Name = backStackEntry.arguments?.getString("Name") ?: "",

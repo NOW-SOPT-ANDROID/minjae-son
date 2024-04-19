@@ -37,7 +37,7 @@ data class BottomNavigationItem(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ScaffoldExample(ID: String, PW: String, Name: String, Place: String) {
+fun Scaffold(ID: String, PW: String, Name: String, Place: String) {
     var presses by remember { mutableIntStateOf(0) }
     var selectedItem by remember { mutableIntStateOf(0) }
     val items = listOf(
