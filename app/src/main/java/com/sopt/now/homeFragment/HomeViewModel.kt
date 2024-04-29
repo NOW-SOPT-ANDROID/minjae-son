@@ -8,7 +8,7 @@ class HomeViewModel : ViewModel() {
     val mockMyProfile = HomeViewObject.MyProfile(
         profileImage = R.drawable.sonminjae_profile,
         name = "Son minjae",
-        place = "Korea, Seoul",
+        phoneNumber = "Korea, Seoul",
         selfDescription = "i can win",
         enable = true,
     )
@@ -16,61 +16,61 @@ class HomeViewModel : ViewModel() {
         HomeViewObject.FriendProfile(
             profileImage = R.drawable.michaeljordan_profile,
             name = "Michael jordan",
-            place = "USA, Chicago",
+            phoneNumber = "USA, Chicago",
             selfDescription = "I'm the GOAT",
         ),
         HomeViewObject.FriendProfile(
             profileImage = R.drawable.stephcurry_profile,
             name = "Steph Curry",
-            place = "USA, San Francisco",
+            phoneNumber = "USA, San Francisco",
             selfDescription = "I can shoot with ma eyes closed",
         ),
         HomeViewObject.FriendProfile(
             profileImage = R.drawable.nikolajokic_profile,
             name = "Nikola Jokic",
-            place = "USA, Denver",
+            phoneNumber = "USA, Denver",
             selfDescription = "Basketball? It's EEEEEasy",
         ),
         HomeViewObject.FriendProfile(
             profileImage = R.drawable.lukadoncic_profile,
             name = "Luka Doncic",
-            place = "USA, Dallas",
+            phoneNumber = "USA, Dallas",
             selfDescription = "Love you, Kyle"
         ),
         HomeViewObject.FriendProfile(
             profileImage = R.drawable.lebronjames_profile,
             name = "Lebron James",
-            place = "USA, Los Angeles",
+            phoneNumber = "USA, Los Angeles",
             selfDescription = "I'm the real GOAT"
         ),
         HomeViewObject.FriendProfile(
             profileImage = R.drawable.kevindurant_profile,
             name = "Kevin Durant",
-            place = "USA, Phoenix",
+            phoneNumber = "USA, Phoenix",
             selfDescription = "2 CHAMPS, 2 MVP. That's it"
         ),
         HomeViewObject.FriendProfile(
             profileImage = R.drawable.jimmybutler_profile,
             name = "Jimmy Butler",
-            place = "USA, Miami",
+            phoneNumber = "USA, Miami",
             selfDescription = "I NEED RINGS"
         ),
         HomeViewObject.FriendProfile(
             profileImage = R.drawable.dirknowitzki_profile,
             name = "Dirk Nowitzki",
-            place = "USA, Dallas",
+            phoneNumber = "USA, Dallas",
             selfDescription = "Have you heard about German Wunderkind?"
         ),
         HomeViewObject.FriendProfile(
             profileImage = R.drawable.demianlillard_profile,
             name = "Demian Lillard",
-            place = "USA, Portland",
+            phoneNumber = "USA, Portland",
             selfDescription = "It's DAME TIME."
         ),
         HomeViewObject.FriendProfile(
             profileImage = R.drawable.charlesbarkley_profile,
             name = "Charles Barkley",
-            place = "USA, Philadelphia",
+            phoneNumber = "USA, Philadelphia",
             selfDescription = "CHUCK CHUCK"
         )
     )

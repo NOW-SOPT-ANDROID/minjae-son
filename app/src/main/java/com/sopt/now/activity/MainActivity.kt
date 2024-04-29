@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         val userId = intent.getStringExtra("ID")
         val userPw = intent.getStringExtra("PW")
         val userName = intent.getStringExtra("Name")
-        val userPlace = intent.getStringExtra("Place")
+        val userPhoneNumber = intent.getStringExtra("PhoneNumber")
 
         val currentFragment = supportFragmentManager.findFragmentById(binding.fcvMain.id)
         if (currentFragment == null) {
@@ -27,17 +27,17 @@ class MainActivity : AppCompatActivity() {
                 .add(binding.fcvMain.id, HomeFragment())
                 .commit()
         }
-        clickBottomNavigation(userId,userPw,userName,userPlace)
+        clickBottomNavigation(userId,userPw,userName,userPhoneNumber)
     }
 
-    private fun clickBottomNavigation(userId:String?,userPw:String?,userName:String?,userPlace:String?) {
+    private fun clickBottomNavigation(userId:String?, userPw:String?, userName:String?, userPhoneNumber:String?) {
         binding.bnvMain.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_home -> {
                     val homeFragment = HomeFragment().apply {
                         arguments = Bundle().apply {
                             putString("Name", userName)
-                            putString("Place", userPlace)
+                            putString("Place", userPhoneNumber)
                         }
                     }
                     replaceFragment(HomeFragment())
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                             putString("ID", userId)
                             putString("PW", userPw)
                             putString("Name", userName)
-                            putString("Place", userPlace)
+                            putString("PhoneNumber", userPhoneNumber)
                         }
                     }
                     replaceFragment(myPageFragment)

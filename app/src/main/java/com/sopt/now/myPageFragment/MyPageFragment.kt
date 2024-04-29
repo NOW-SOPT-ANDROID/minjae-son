@@ -17,7 +17,7 @@ class MyPageFragment : Fragment() {
     private var userId: String? = null
     private var userPw: String? = null
     private var userName: String? = null
-    private var userPlace: String? = null
+    private var userPhoneNumber: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,7 +28,7 @@ class MyPageFragment : Fragment() {
         userId = arguments?.getString("ID")
         userPw = arguments?.getString("PW")
         userName = arguments?.getString("Name")
-        userPlace = arguments?.getString("Place")
+        userPhoneNumber = arguments?.getString("PhoneNumber")
         return binding.root
     }
 
@@ -38,7 +38,7 @@ class MyPageFragment : Fragment() {
         binding.tvMyPageShowId.text = userId
         binding.tvMyPageShowPw.text = userPw
         binding.tvMyPageShowName.text = userName
-        binding.tvMyPageShowPlace.text = userPlace
+        binding.tvMyPageShowPhoneNumber.text = userPhoneNumber
     }
 
     override fun onDestroyView() {

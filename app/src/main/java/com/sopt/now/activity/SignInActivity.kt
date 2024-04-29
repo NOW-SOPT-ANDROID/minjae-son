@@ -17,10 +17,10 @@ class SignInActivity : AppCompatActivity() {
         val userId = intent.getStringExtra("ID")
         val userPw = intent.getStringExtra("PW")
         val userName = intent.getStringExtra("Name")
-        val userPlace = intent.getStringExtra("Place")
+        val userPhoneNumber = intent.getStringExtra("PhoneNumber")
 
         binding.btnSignInSignIn.setOnClickListener {
-            isSignInValid(userId, userPw, userName, userPlace)
+            isSignInValid(userId, userPw, userName, userPhoneNumber)
         }
 
         binding.btnSignInSignUp.setOnClickListener {
@@ -29,7 +29,7 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
-    private fun isSignInValid(userId: String?, userPw: String?, userName: String?, userPlace: String?) {
+    private fun isSignInValid(userId: String?, userPw: String?, userName: String?, userPhoneNumber: String?) {
         when {
             binding.etSignInId.text.toString() != userId -> {
                 showToast(getString(R.string.toast_SignInActivity_InvalidId))
@@ -39,7 +39,7 @@ class SignInActivity : AppCompatActivity() {
             }
             else -> {
                 showToast(getString(R.string.toast_SignInActivity_ValidSignIn))
-                navigateToMainActivity(userId, userPw, userName, userPlace)
+                navigateToMainActivity(userId, userPw, userName, userPhoneNumber)
             }
         }
     }
@@ -48,12 +48,12 @@ class SignInActivity : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    private fun navigateToMainActivity(userId: String?, userPw: String?, userName: String?, userPlace: String?) {
+    private fun navigateToMainActivity(userId: String?, userPw: String?, userName: String?, userPhoneNumber: String?) {
         val intent = Intent(this, MainActivity::class.java)
         intent.putExtra("ID", userId)
         intent.putExtra("PW", userPw)
         intent.putExtra("Name", userName)
-        intent.putExtra("Place", userPlace)
+        intent.putExtra("PhoneNumber", userPhoneNumber)
         startActivity(intent)
     }
 }

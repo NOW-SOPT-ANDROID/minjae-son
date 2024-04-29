@@ -81,22 +81,22 @@
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
-        android:id="@+id/tvMyPagePlace"
+        android:id="@+id/tvMyPagePhoneNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/tvMyPageShowPw"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="30dp"
         android:layout_marginStart="50dp"
-        android:text="@string/tv_MyPageFragment_Place"
+        android:text="@string/tv_MyPageFragment_PhoneNumber"
         android:textSize="20sp"
         />
 
     <TextView
-        android:id="@+id/tvMyPageShowPlace"
+        android:id="@+id/tvMyPageShowPhoneNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tvMyPagePlace"
+        app:layout_constraintTop_toBottomOf="@+id/tvMyPagePhoneNumber"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="10dp"
         android:layout_marginStart="50dp"

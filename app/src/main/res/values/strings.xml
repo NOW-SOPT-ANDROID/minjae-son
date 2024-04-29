@@ -23,8 +23,8 @@
     <string name="et_SignUp_Pw">비밀번호를 입력해주세요 (8~12자)</string>
     <string name="tv_SignUp_Name">닉네임</string>
     <string name="et_SignUp_Name">닉네임을 입력해주세요</string>
-    <string name="tv_SignUp_Place">거주지</string>
-    <string name="et_SignUp_Place">거주지를 입력해주세요</string>
+    <string name="tv_SignUp_PhoneNumber">전화번호</string>
+    <string name="et_SignUp_PhoneNumber">전화번호를 입력해주세요</string>
     <string name="btn_SignUp_SignUp">회원가입 하기</string>
 
     <!--    SignUpActivity-->
@@ -36,5 +36,5 @@
     <string name="tv_MyPageFragment_Main">SOPT에 온 걸 환영해!</string>
     <string name="tv_MyPageFragment_Id">아이디</string>
     <string name="tv_MyPageFragment_Pw">비밀번호</string>
-    <string name="tv_MyPageFragment_Place">거주지</string>
+    <string name="tv_MyPageFragment_PhoneNumber">전화번호</string>
 </resources>

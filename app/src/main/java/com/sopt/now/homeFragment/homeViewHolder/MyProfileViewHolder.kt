@@ -11,7 +11,7 @@ class MyProfileViewHolder(private val binding: ItemMyprofileBinding) :
         binding.run {
             ivMyProfileProfile.setImageResource(myProfileData.profileImage)
             tvMyProfileName.text = myProfileData.name
-            tvMyProfilePlace.text = myProfileData.place
+            tvMyProfilePhoneNumber.text = myProfileData.phoneNumber
             tvMyProfileSelfDescription.text = myProfileData.selfDescription
             switchMyProfileEnable
         }
