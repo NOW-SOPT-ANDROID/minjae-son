@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tvMyPageSopt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_MyPageFragment_Main"
+        android:textSize="30dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"/>
+
+    <ImageView
+        android:id="@+id/imgMyPageProfile"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginStart="50dp"
+        app:layout_constraintTop_toTopOf="@+id/tvMyPageSopt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/sonminjae_profile"
+        app:layout_constraintDimensionRatio="1:1"
+        />
+
+    <TextView
+        android:id="@+id/tvMyPageShowName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        app:layout_constraintTop_toTopOf="@+id/tvMyPageSopt"
+        app:layout_constraintStart_toEndOf="@+id/imgMyPageProfile"
+        android:layout_marginTop="125dp"
+        android:layout_marginStart="20dp"
+        />
+
+    <TextView
+        android:id="@+id/tvMyPageId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="50dp"
+        android:text="@string/tv_MyPageFragment_Id"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgMyPageProfile" />
+
+    <TextView
+        android:id="@+id/tvMyPageShowId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:textSize="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvMyPageId"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvMyPagePw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/tv_MyPageFragment_Pw"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvMyPageShowId"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvMyPageShowPw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="50dp"
+        android:textSize="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvMyPagePw"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvMyPagePlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvMyPageShowPw"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="50dp"
+        android:text="@string/tv_MyPageFragment_Place"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/tvMyPageShowPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvMyPagePlace"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="50dp"
+        android:textSize="15sp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
