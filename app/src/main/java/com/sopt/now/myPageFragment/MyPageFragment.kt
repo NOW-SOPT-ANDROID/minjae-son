@@ -11,7 +11,7 @@ class MyPageFragment : Fragment() {
     private var _binding: FragmentMypageBinding? = null
     private val binding
         get() = requireNotNull(_binding) {
-            "바인딩 객체 생성 해라"
+            "바인딩 객체를 생성해야 합니다."
         }
 
     private var userId: String? = null

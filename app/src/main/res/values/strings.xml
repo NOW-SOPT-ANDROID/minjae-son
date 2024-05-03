@@ -32,10 +32,27 @@
     <string name="toast_SignUpActivity_InvalidSignUp_Blank">입력하지 않은 정보가 있습니다.</string>
     <string name="toast_SignUpActivity_InvalidSignUp">회원가입 실패</string>
 
+    <!--    item_myprofile-->
+    <string name="tv_Item_MyProfile_Name">이름</string>
+    <string name="tv_Item_MyProfile_PhoneNumber">전화번호</string>
+    <string name="tv_Item_MyProfile_SelfDescription">자기소개</string>
+
+    <!--    item_friend-->
+    <string name="tv_Item_Friend_Name">이름</string>
+    <string name="tv_Item_Friend_PhoneNumber">전화번호</string>
+    <string name="tv_Item_Friend_SelfDescription">자기소개</string>
+
+    <!--    menu_home-->
+    <string name="item_menu_home_home">홈</string>
+    <string name="item_menu_home_search">검색</string>
+    <string name="item_menu_home_mypage">마이페이지</string>
+
+    <!--    fragment_search-->
+    <string name="tvSearch">검색</string>
+
     <!--    fragment_mypage-->
     <string name="tv_MyPageFragment_Main">SOPT에 온 걸 환영해!</string>
     <string name="tv_MyPageFragment_Id">아이디</string>
     <string name="tv_MyPageFragment_Pw">비밀번호</string>
     <string name="tv_MyPageFragment_PhoneNumber">전화번호</string>
-    <string name="tvSearch">검색</string>
 </resources>
