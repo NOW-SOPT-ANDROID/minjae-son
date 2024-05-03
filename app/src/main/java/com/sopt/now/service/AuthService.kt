@@ -8,7 +8,6 @@ import com.sopt.now.data.ResponseUserInfoDto
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.HEAD
 import retrofit2.http.Header
 import retrofit2.http.POST
 
@@ -25,6 +24,6 @@ interface AuthService {
 
     @GET("member/info")
     fun getUserInfo(
-        @Header ("memberId") memberId:Int,
+        @Header("memberId") memberId: Int,
     ): Call<ResponseUserInfoDto>
 }

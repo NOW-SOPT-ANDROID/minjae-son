@@ -5,8 +5,11 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.sopt.now.data.RequestSignInDto
 import com.sopt.now.databinding.ActivitySigninBinding
+import com.sopt.now.state.SignInState
 import com.sopt.now.viewModel.SignInViewModel
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,19 +29,22 @@ class SignInActivity : AppCompatActivity() {
         binding.btnSignInSignIn.setOnClickListener {
             viewModel.signIn(getSignInRequestDto())
         }
+
+        binding.btnSignInSignUp.setOnClickListener {
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun initObserver() {
         viewModel.liveData.observe(this) {
-            showToast(it.message)
-        }
-
-        viewModel.navigateToMain.observe(this) { navigate ->
-            if (navigate) {
-                val intent = Intent(this, MainActivity::class.java)
+            SignInState ->
+            Toast.makeText(this,SignInState.message,Toast.LENGTH_SHORT).show()
+            if(SignInState.isSuccess) {
+                val intent = Intent(this@SignInActivity,MainActivity::class.java).apply{
+                    SignInState.memberId?.let { memberId -> putExtra("memberId",memberId) }
+                }
                 startActivity(intent)
-                // Activity 이동 후 navigateToSignIn 값을 재설정하여 다음 이벤트에 대비
-                viewModel.doneNavigatingToMain()
             }
         }
     }
@@ -50,9 +56,5 @@ class SignInActivity : AppCompatActivity() {
             authenticationId = id,
             password = password,
         )
-    }
-
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

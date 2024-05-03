@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.sopt.now.data.RequestSignInDto
 import com.sopt.now.data.RequestSignUpDto
 import com.sopt.now.databinding.ActivitySignupBinding
 import com.sopt.now.viewModel.SignUpViewModel
@@ -36,7 +35,6 @@ class SignUpActivity : AppCompatActivity() {
             if (navigate) {
                 val intent = Intent(this, SignInActivity::class.java)
                 startActivity(intent)
-                // Activity 이동 후 navigateToSignIn 값을 재설정하여 다음 이벤트에 대비
                 viewModel.doneNavigatingToSignIn()
             }
         }

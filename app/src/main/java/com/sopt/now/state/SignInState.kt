@@ -2,5 +2,6 @@ package com.sopt.now.state
 
 data class SignInState(
     val isSuccess: Boolean,
-    val message: String
+    val message: String,
+    val memberId: String? = ""
 )
