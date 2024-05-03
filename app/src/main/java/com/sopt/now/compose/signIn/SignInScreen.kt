@@ -1,4 +1,4 @@
-package com.sopt.now.compose
+package com.sopt.now.compose.signIn
 
 import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
@@ -29,6 +29,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.sopt.now.compose.R
+import com.sopt.now.compose.SOPTOutlinedButton
+import com.sopt.now.compose.showToast
 
 @Composable
 fun SignInScreen(

@@ -1,5 +1,10 @@
-package com.sopt.now.compose
+package com.sopt.now.compose.service
 
+import com.sopt.now.compose.request.RequestSignInDto
+import com.sopt.now.compose.request.RequestSignUpDto
+import com.sopt.now.compose.response.ResponseSignInDto
+import com.sopt.now.compose.response.ResponseSignUpDto
+import com.sopt.now.compose.response.ResponseUserInfoDto
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
