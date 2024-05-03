@@ -2,25 +2,30 @@ package com.sopt.now.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.sopt.now.R
+import com.sopt.now.data.RequestSignInDto
+import com.sopt.now.data.ResponseSignInDto
+import com.sopt.now.data.ServicePool
 import com.sopt.now.databinding.ActivitySigninBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SignInActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySigninBinding
+
+    private val binding by lazy { ActivitySigninBinding.inflate(layoutInflater) }
+    private val authService by lazy { ServicePool.authService }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySigninBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        initViews()
+    }
 
-        val userId = intent.getStringExtra("ID")
-        val userPw = intent.getStringExtra("PW")
-        val userName = intent.getStringExtra("Name")
-        val userPhoneNumber = intent.getStringExtra("PhoneNumber")
-
+    private fun initViews() {
         binding.btnSignInSignIn.setOnClickListener {
-            isSignInValid(userId, userPw, userName, userPhoneNumber)
+            signIn()
         }
 
         binding.btnSignInSignUp.setOnClickListener {
@@ -29,32 +34,46 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
-    private fun isSignInValid(userId: String?, userPw: String?, userName: String?, userPhoneNumber: String?) {
-        when {
-            binding.etSignInId.text.toString() != userId -> {
-                showToast(getString(R.string.toast_SignInActivity_InvalidId))
+    private fun signIn() {
+        val signInRequest = getSignInRequestDto()
+        authService.signIn(signInRequest).enqueue(object : Callback<ResponseSignInDto> {
+            override fun onResponse(
+                call: Call<ResponseSignInDto>,
+                response: Response<ResponseSignInDto>,
+            ) {
+                if (response.isSuccessful) {
+                    val data: ResponseSignInDto? = response.body()
+                    val userId = response.headers()["location"]
+                    showToast("로그인 성공 유저의 ID는 $userId 입니둥")
+                    Log.d("SignUp", "data: $data, userId: $userId")
+                    moveToMainActivity()
+                } else {
+                    val error = response.message()
+                    showToast("로그인이 실패 $error")
+                }
             }
-            binding.etSignInPw.text.toString() != userPw -> {
-                showToast(getString(R.string.toast_SignInActivity_InvalidPw))
+
+            override fun onFailure(call: Call<ResponseSignInDto>, t: Throwable) {
+                showToast("서버 에러 발생 ")
             }
-            else -> {
-                showToast(getString(R.string.toast_SignInActivity_ValidSignIn))
-                navigateToMainActivity(userId, userPw, userName, userPhoneNumber)
-            }
-        }
+        })
     }
 
+    private fun getSignInRequestDto(): RequestSignInDto {
+        val id = binding.etSignInId.text.toString()
+        val password = binding.etSignInPw.text.toString()
+        return RequestSignInDto(
+            authenticationId = id,
+            password = password,
+        )
+    }
+
+    private fun moveToMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-
-    private fun navigateToMainActivity(userId: String?, userPw: String?, userName: String?, userPhoneNumber: String?) {
-        val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("ID", userId)
-        intent.putExtra("PW", userPw)
-        intent.putExtra("Name", userName)
-        intent.putExtra("PhoneNumber", userPhoneNumber)
-        startActivity(intent)
     }
 }
 

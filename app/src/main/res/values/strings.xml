@@ -37,4 +37,5 @@
     <string name="tv_MyPageFragment_Id">아이디</string>
     <string name="tv_MyPageFragment_Pw">비밀번호</string>
     <string name="tv_MyPageFragment_PhoneNumber">전화번호</string>
+    <string name="tvSearch">검색</string>
 </resources>

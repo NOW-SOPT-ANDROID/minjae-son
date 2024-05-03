@@ -1,11 +1,12 @@
 package com.sopt.now.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sopt.now.data.RequestSignUpDto
-import com.sopt.now.data.ResponseSignUpDto
+import com.sopt.now.data.ResponseSignInDto
 import com.sopt.now.data.ServicePool
 import com.sopt.now.databinding.ActivitySignupBinding
 import retrofit2.Call
@@ -30,32 +31,25 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun signUp() {
         val signUpRequest = getSignUpRequestDto()
-        authService.signUp(signUpRequest).enqueue(object : Callback<ResponseSignUpDto> {
+        authService.signUp(signUpRequest).enqueue(object : Callback<ResponseSignInDto> {
             override fun onResponse(
-                call: Call<ResponseSignUpDto>,
-                response: Response<ResponseSignUpDto>,
+                call: Call<ResponseSignInDto>,
+                response: Response<ResponseSignInDto>,
             ) {
                 if (response.isSuccessful) {
-                    val data: ResponseSignUpDto? = response.body()
+                    val data: ResponseSignInDto? = response.body()
                     val userId = response.headers()["location"]
-                    Toast.makeText(
-                        this@SignUpActivity,
-                        "회원가입 성공 유저의 ID는 $userId 입니둥",
-                        Toast.LENGTH_SHORT,
-                    ).show()
+                    showToast("회원가입 성공 유저의 ID는 $userId 입니둥")
                     Log.d("SignUp", "data: $data, userId: $userId")
+                    moveToSignInActivity()
                 } else {
                     val error = response.message()
-                    Toast.makeText(
-                        this@SignUpActivity,
-                        "로그인이 실패 $error",
-                        Toast.LENGTH_SHORT,
-                    ).show()
+                    showToast("로그인이 실패 $error")
                 }
             }
 
-            override fun onFailure(call: Call<ResponseSignUpDto>, t: Throwable) {
-                Toast.makeText(this@SignUpActivity, "서버 에러 발생 ", Toast.LENGTH_SHORT).show()
+            override fun onFailure(call: Call<ResponseSignInDto>, t: Throwable) {
+                showToast("서버 에러 발생 ")
             }
         })
     }
@@ -71,5 +65,14 @@ class SignUpActivity : AppCompatActivity() {
             nickname = nickname,
             phone = phoneNumber
         )
+    }
+
+    private fun moveToSignInActivity() {
+        val intent = Intent(this, SignInActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

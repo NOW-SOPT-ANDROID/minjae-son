@@ -8,7 +8,7 @@ interface AuthService {
     @POST("member/join")
     fun signUp(
         @Body request: RequestSignUpDto,
-    ): Call<ResponseSignUpDto>
+    ): Call<ResponseSignInDto>
 
     @POST("member/login")
     fun signIn(
