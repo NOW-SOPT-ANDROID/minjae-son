@@ -1,8 +1,15 @@
-package com.sopt.now.data
+package com.sopt.now.service
 
+import com.sopt.now.data.RequestSignInDto
+import com.sopt.now.data.RequestSignUpDto
+import com.sopt.now.data.ResponseSignInDto
+import com.sopt.now.data.ResponseSignUpDto
+import com.sopt.now.data.ResponseUserInfoDto
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.HEAD
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface AuthService {
@@ -17,7 +24,7 @@ interface AuthService {
     ): Call<ResponseSignInDto>
 
     @GET("member/info")
-    fun userInfo(
-        @Body request: ResponseUserInfoDto,
+    fun getUserInfo(
+        @Header ("memberId") memberId:Int,
     ): Call<ResponseUserInfoDto>
 }

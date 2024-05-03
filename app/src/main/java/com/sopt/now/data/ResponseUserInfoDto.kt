@@ -10,15 +10,22 @@ data class ResponseUserInfoDto(
     @SerialName("message")
     val message: String,
     @SerialName("data")
-    val data: UserInfo,
-)
+    val data: UserInfo? = defalutUser,
+) {
+    @Serializable
+    data class UserInfo(
+        @SerialName("authenticationId")
+        val authenticationId: String? = "",
+        @SerialName("nickname")
+        val nickname: String? = "",
+        @SerialName("phone")
+        val phone: String? = "",
+    )
 
-@Serializable
-data class UserInfo(
-    @SerialName("authenticationId")
-    val authenticationId: String,
-    @SerialName("nickname")
-    val nickname: String,
-    @SerialName("phone")
-    val phone: String,
-)
+    companion object {
+        val defalutUser = UserInfo()
+    }
+}
+
+
+
