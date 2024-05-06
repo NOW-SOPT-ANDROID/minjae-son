@@ -1,13 +1,9 @@
-package com.sopt.now.viewModel
+package com.sopt.now.signIn
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sopt.now.ServicePool
-import com.sopt.now.data.RequestSignInDto
-import com.sopt.now.data.ResponseSignInDto
-import com.sopt.now.data.ResponseUserInfoDto
-import com.sopt.now.state.SignInState
+import com.sopt.now.service.ServicePool
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

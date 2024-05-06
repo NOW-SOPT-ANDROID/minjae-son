@@ -1,4 +1,4 @@
-package com.sopt.now.homeFragment
+package com.sopt.now.main.homeFragment
 
 import androidx.lifecycle.ViewModel
 import com.sopt.now.R

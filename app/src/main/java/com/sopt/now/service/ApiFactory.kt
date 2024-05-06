@@ -1,7 +1,7 @@
-package com.sopt.now
+package com.sopt.now.service
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.sopt.now.service.AuthService
+import com.sopt.now.BuildConfig
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit

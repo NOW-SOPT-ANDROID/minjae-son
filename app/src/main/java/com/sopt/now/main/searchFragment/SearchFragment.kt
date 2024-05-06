@@ -1,4 +1,4 @@
-package com.sopt.now.searchFragment
+package com.sopt.now.main.searchFragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

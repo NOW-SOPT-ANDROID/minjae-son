@@ -1,4 +1,4 @@
-package com.sopt.now.homeFragment
+package com.sopt.now.main.homeFragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.sopt.now.databinding.ItemFriendBinding
 import com.sopt.now.databinding.ItemMyprofileBinding
-import com.sopt.now.homeFragment.homeViewHolder.FriendViewHolder
-import com.sopt.now.homeFragment.homeViewHolder.MyProfileViewHolder
+import com.sopt.now.main.homeFragment.homeViewHolder.FriendViewHolder
+import com.sopt.now.main.homeFragment.homeViewHolder.MyProfileViewHolder
 
 class HomeProfileAdapter() : RecyclerView.Adapter<ViewHolder>() {
 

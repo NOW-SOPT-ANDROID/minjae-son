@@ -1,4 +1,4 @@
-package com.sopt.now.myPageFragment
+package com.sopt.now.main.myPageFragment
 
 import android.os.Bundle
 import android.util.Log
@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.sopt.now.ServicePool
-import com.sopt.now.data.ResponseUserInfoDto
+import com.sopt.now.service.ServicePool
+import com.sopt.now.main.ResponseUserInfoDto
 import com.sopt.now.databinding.FragmentMypageBinding
 import retrofit2.Call
 import retrofit2.Callback

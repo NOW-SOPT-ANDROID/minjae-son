@@ -1,4 +1,4 @@
-package com.sopt.now.state
+package com.sopt.now.signUp
 
 data class SignUpState(
     val isSuccess: Boolean,

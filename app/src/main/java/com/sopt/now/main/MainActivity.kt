@@ -1,4 +1,4 @@
-package com.sopt.now.activity
+package com.sopt.now.main
 
 import android.os.Bundle
 import android.util.Log
@@ -6,9 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.sopt.now.R
 import com.sopt.now.databinding.ActivityMainBinding
-import com.sopt.now.homeFragment.HomeFragment
-import com.sopt.now.myPageFragment.MyPageFragment
-import com.sopt.now.searchFragment.SearchFragment
+import com.sopt.now.main.homeFragment.HomeFragment
+import com.sopt.now.main.myPageFragment.MyPageFragment
+import com.sopt.now.main.searchFragment.SearchFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

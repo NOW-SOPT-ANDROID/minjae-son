@@ -1,8 +1,8 @@
-package com.sopt.now.homeFragment.homeViewHolder
+package com.sopt.now.main.homeFragment.homeViewHolder
 
 import androidx.recyclerview.widget.RecyclerView
 import com.sopt.now.databinding.ItemFriendBinding
-import com.sopt.now.homeFragment.HomeViewObject
+import com.sopt.now.main.homeFragment.HomeViewObject
 
 class FriendViewHolder(private val binding: ItemFriendBinding) :
     RecyclerView.ViewHolder(binding.root) {

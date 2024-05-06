@@ -1,18 +1,13 @@
-package com.sopt.now.activity
+package com.sopt.now.signIn
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.sopt.now.data.RequestSignInDto
+import com.sopt.now.main.MainActivity
+import com.sopt.now.signUp.SignUpActivity
 import com.sopt.now.databinding.ActivitySigninBinding
-import com.sopt.now.state.SignInState
-import com.sopt.now.viewModel.SignInViewModel
-import retrofit2.Callback
-import retrofit2.Response
 
 class SignInActivity : AppCompatActivity() {
 
@@ -41,7 +36,7 @@ class SignInActivity : AppCompatActivity() {
             SignInState ->
             Toast.makeText(this,SignInState.message,Toast.LENGTH_SHORT).show()
             if(SignInState.isSuccess) {
-                val intent = Intent(this@SignInActivity,MainActivity::class.java).apply{
+                val intent = Intent(this@SignInActivity, MainActivity::class.java).apply{
                     SignInState.memberId?.let { memberId -> putExtra("memberId",memberId) }
                 }
                 startActivity(intent)

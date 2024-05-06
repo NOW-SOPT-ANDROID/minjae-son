@@ -1,13 +1,12 @@
-package com.sopt.now.activity
+package com.sopt.now.signUp
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.sopt.now.data.RequestSignUpDto
 import com.sopt.now.databinding.ActivitySignupBinding
-import com.sopt.now.viewModel.SignUpViewModel
+import com.sopt.now.signIn.SignInActivity
 
 class SignUpActivity : AppCompatActivity() {
 
