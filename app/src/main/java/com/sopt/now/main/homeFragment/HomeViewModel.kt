@@ -1,77 +1,75 @@
 package com.sopt.now.main.homeFragment
 
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sopt.now.R
+import com.sopt.now.main.ResponseUserInfoDto
+import com.sopt.now.service.ServicePool
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeViewModel : ViewModel() {
 
-    val mockMyProfile = HomeViewObject.MyProfile(
-        profileImage = R.drawable.sonminjae_profile,
-        name = "Son minjae",
-        phoneNumber = "Korea, Seoul",
-        selfDescription = "i can win",
-        enable = true,
-    )
-    val mockFriendProfileList = listOf(
-        HomeViewObject.FriendProfile(
-            profileImage = R.drawable.michaeljordan_profile,
-            name = "Michael jordan",
-            phoneNumber = "USA, Chicago",
-            selfDescription = "I'm the GOAT",
-        ),
-        HomeViewObject.FriendProfile(
-            profileImage = R.drawable.stephcurry_profile,
-            name = "Steph Curry",
-            phoneNumber = "USA, San Francisco",
-            selfDescription = "I can shoot with ma eyes closed",
-        ),
-        HomeViewObject.FriendProfile(
-            profileImage = R.drawable.nikolajokic_profile,
-            name = "Nikola Jokic",
-            phoneNumber = "USA, Denver",
-            selfDescription = "Basketball? It's EEEEEasy",
-        ),
-        HomeViewObject.FriendProfile(
-            profileImage = R.drawable.lukadoncic_profile,
-            name = "Luka Doncic",
-            phoneNumber = "USA, Dallas",
-            selfDescription = "Love you, Kyle"
-        ),
-        HomeViewObject.FriendProfile(
-            profileImage = R.drawable.lebronjames_profile,
-            name = "Lebron James",
-            phoneNumber = "USA, Los Angeles",
-            selfDescription = "I'm the real GOAT"
-        ),
-        HomeViewObject.FriendProfile(
-            profileImage = R.drawable.kevindurant_profile,
-            name = "Kevin Durant",
-            phoneNumber = "USA, Phoenix",
-            selfDescription = "2 CHAMPS, 2 MVP. That's it"
-        ),
-        HomeViewObject.FriendProfile(
-            profileImage = R.drawable.jimmybutler_profile,
-            name = "Jimmy Butler",
-            phoneNumber = "USA, Miami",
-            selfDescription = "I NEED RINGS"
-        ),
-        HomeViewObject.FriendProfile(
-            profileImage = R.drawable.dirknowitzki_profile,
-            name = "Dirk Nowitzki",
-            phoneNumber = "USA, Dallas",
-            selfDescription = "Have you heard about German Wunderkind?"
-        ),
-        HomeViewObject.FriendProfile(
-            profileImage = R.drawable.demianlillard_profile,
-            name = "Demian Lillard",
-            phoneNumber = "USA, Portland",
-            selfDescription = "It's DAME TIME."
-        ),
-        HomeViewObject.FriendProfile(
-            profileImage = R.drawable.charlesbarkley_profile,
-            name = "Charles Barkley",
-            phoneNumber = "USA, Philadelphia",
-            selfDescription = "CHUCK CHUCK"
-        )
-    )
+    private val _userInfo = MutableLiveData<HomeData.UserProfile?>()
+    val userInfo: LiveData<HomeData.UserProfile?>
+        get() = _userInfo
+
+    private val _friendsInfo = MutableLiveData<List<HomeData.FriendProfile>?>()
+    val friendsInfo: LiveData<List<HomeData.FriendProfile>?>
+        get() = _friendsInfo
+
+    private val userService by lazy { ServicePool.userService }
+    private val friendService by lazy { ServicePool.friendService }
+
+    fun fetchUserInfo(userId: Int) {
+        userService.getUserInfo(userId).enqueue(object : Callback<ResponseUserInfoDto> {
+            override fun onResponse(
+                call: Call<ResponseUserInfoDto>,
+                response: Response<ResponseUserInfoDto>
+            ) {
+                if (response.isSuccessful) {
+                    val responseUserInfoDto = response.body()
+                    val userProfileInfo = responseUserInfoDto?.data?.let { userData ->
+                        HomeData.UserProfile(
+                            R.drawable.sonminjae_profile,
+                            userData.nickname,
+                            userData.phone,
+                            userData.authenticationId)
+                        }
+                    _userInfo.value = userProfileInfo
+                }
+            }
+            override fun onFailure(call: Call<ResponseUserInfoDto>, t: Throwable) {
+                Log.e("HomeViewModel", t.message.toString())
+            }
+        })
+    }
+
+    fun fetchFriendsInfo() {
+        friendService.getFriendsInfo(2).enqueue(object : Callback<ResponseFriendsInfoDto> {
+            override fun onResponse(
+                call: Call<ResponseFriendsInfoDto>,
+                response: Response<ResponseFriendsInfoDto>
+            ) {
+                if (response.isSuccessful) {
+                    val responseFriendsInfoDto = response.body()
+                    val friendProfiles = responseFriendsInfoDto?.data?.map { friendData ->
+                        HomeData.FriendProfile(
+                            friendData.avatar,
+                            "${friendData.firstName}+${ friendData.lastName}",
+                            friendData.email
+                        )
+                    }
+                    _friendsInfo.postValue(friendProfiles)
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseFriendsInfoDto>, t: Throwable) {
+                Log.e("HomeViewModel", t.message.toString())
+            }
+        })
+    }
 }

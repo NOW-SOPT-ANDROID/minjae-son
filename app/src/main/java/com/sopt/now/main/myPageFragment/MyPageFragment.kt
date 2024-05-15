@@ -49,7 +49,7 @@ class MyPageFragment : Fragment() {
         memberId = activity?.intent?.getStringExtra("memberId") ?: "0"
 
         memberId?.let { memberId ->
-            ServicePool.authService.getUserInfo(memberId.toInt()).enqueue(object :
+            ServicePool.userService.getUserInfo(memberId.toInt()).enqueue(object :
                 Callback<ResponseUserInfoDto> {
                 override fun onResponse(
                     call: Call<ResponseUserInfoDto>,

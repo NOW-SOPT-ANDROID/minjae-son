@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginStart="50dp"
-        android:text="@string/tv_MyPageFragment_Id"
+        android:text="@string/tv_MyPageFragment_authenticationId"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgMyPageProfile" />

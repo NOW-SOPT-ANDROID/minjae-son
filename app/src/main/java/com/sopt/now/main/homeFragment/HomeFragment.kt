@@ -6,17 +6,29 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.sopt.now.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
-
     private var _binding: FragmentHomeBinding? = null
     private val binding
         get() = requireNotNull(_binding) {
             "바인딩 객체를 생성해야 합니다."
         }
     private val viewModel by viewModels<HomeViewModel>()
+
+    companion object {
+        fun newInstance(memberId: String?): HomeFragment {
+            val fragment = HomeFragment()
+            val args = Bundle().apply {
+                putString("memberId", memberId)
+            }
+            fragment.arguments = args
+            return fragment
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,12 +41,36 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val homeProfiledAdapter = HomeProfileAdapter()
+        val memberId = activity?.intent?.getStringExtra("memberId") ?: "0"
+        val homeProfiledAdapter = HomeViewAdapter()
+
+        viewModel.fetchUserInfo(memberId.toInt())
+        viewModel.fetchFriendsInfo()
+
         binding.rvHomeFriendList.run {
             adapter = homeProfiledAdapter
             layoutManager = LinearLayoutManager(requireContext())
+            homeProfiledAdapter.setUserProfileList(viewModel.userInfo.value)
+            homeProfiledAdapter.setFriendProfileList(viewModel.friendsInfo.value)
+
+            viewModel.userInfo.observe(viewLifecycleOwner, Observer { userProfile ->
+                userProfile?.let { updateUserProfileUI(this,it) }
+            })
+            viewModel.friendsInfo.observe(viewLifecycleOwner, Observer { friendProfiles ->
+                friendProfiles?.let { updateFriendProfilesUI(this,it) }
+            })
         }
-        homeProfiledAdapter.setProfileList(viewModel.mockMyProfile, viewModel.mockFriendProfileList)
+    }
+
+    private fun updateUserProfileUI(view: RecyclerView, it: HomeData.UserProfile) {
+        val adapter = view.adapter as? HomeViewAdapter
+        adapter?.setUserProfileList(it)
+    }
+
+
+    private fun updateFriendProfilesUI(view: RecyclerView, it: List<HomeData.FriendProfile>) {
+        val adapter = view.adapter as? HomeViewAdapter
+        adapter?.setFriendProfileList(it)
     }
 
     override fun onDestroyView() {

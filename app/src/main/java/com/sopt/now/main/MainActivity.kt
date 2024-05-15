@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val memberId = intent.getStringExtra("memberId") // null일 경우에는 0으로 처리
+        val memberId = intent.getStringExtra("memberId")
         Log.e("MainActivity", "memberId: ${memberId}")
 
         val currentFragment = supportFragmentManager.findFragmentById(binding.fcvMain.id)
@@ -33,7 +33,8 @@ class MainActivity : AppCompatActivity() {
         binding.bnvMain.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_home -> {
-                    replaceFragment(HomeFragment())
+                    val homeFragment = HomeFragment.newInstance(memberId)
+                    replaceFragment(homeFragment)
                     true
                 }
 

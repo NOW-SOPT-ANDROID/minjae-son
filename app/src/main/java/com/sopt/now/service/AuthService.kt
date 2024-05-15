@@ -21,9 +21,4 @@ interface AuthService {
     fun signIn(
         @Body request: RequestSignInDto,
     ): Call<ResponseSignInDto>
-
-    @GET("member/info")
-    fun getUserInfo(
-        @Header("memberId") memberId: Int,
-    ): Call<ResponseUserInfoDto>
 }

@@ -21,6 +21,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "AUTH_BASE_URL", properties["base.url"]
+        buildConfigField "String", "FRIEND_BASE_URL", properties["friend.base.url"]
     }
 
     buildTypes {
@@ -39,7 +40,6 @@ android {
 
     buildFeatures {
         viewBinding true
-
         buildConfig true
     }
 }
@@ -70,7 +70,11 @@ dependencies {
     // define a BOM and its version
     implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0"))
 
-// define any required OkHttp artifacts without version
+    // define any required OkHttp artifacts without version
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
+
+    // Glide 라이브러리 추가
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 }
