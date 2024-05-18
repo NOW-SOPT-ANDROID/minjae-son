@@ -60,7 +60,7 @@ class HomeViewModel : ViewModel() {
                     val friendProfiles = responseFriendsInfoDto?.data?.map { friendData ->
                         HomeData.FriendProfile(
                             friendData.avatar,
-                            "${friendData.firstName}+${ friendData.lastName}",
+                            "${friendData.firstName} ${ friendData.lastName}",
                             friendData.email
                         )
                     }
