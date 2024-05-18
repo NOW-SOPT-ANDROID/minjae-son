@@ -54,23 +54,12 @@ class HomeFragment : Fragment() {
             homeProfiledAdapter.setFriendProfileList(viewModel.friendsInfo.value)
 
             viewModel.userInfo.observe(viewLifecycleOwner, Observer { userProfile ->
-                userProfile?.let { updateUserProfileUI(this,it) }
+                userProfile?.let { viewModel.updateUserProfileUI(this,it) }
             })
             viewModel.friendsInfo.observe(viewLifecycleOwner, Observer { friendProfiles ->
-                friendProfiles?.let { updateFriendProfilesUI(this,it) }
+                friendProfiles?.let { viewModel.updateFriendProfilesUI(this,it) }
             })
         }
-    }
-
-    private fun updateUserProfileUI(view: RecyclerView, it: HomeData.UserProfile) {
-        val adapter = view.adapter as? HomeViewAdapter
-        adapter?.setUserProfileList(it)
-    }
-
-
-    private fun updateFriendProfilesUI(view: RecyclerView, it: List<HomeData.FriendProfile>) {
-        val adapter = view.adapter as? HomeViewAdapter
-        adapter?.setFriendProfileList(it)
     }
 
     override fun onDestroyView() {

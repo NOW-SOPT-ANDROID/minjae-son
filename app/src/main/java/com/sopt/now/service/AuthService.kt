@@ -6,6 +6,7 @@ import com.sopt.now.signUp.RequestSignUpDto
 import com.sopt.now.signIn.ResponseSignInDto
 import com.sopt.now.signUp.ResponseSignUpDto
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header

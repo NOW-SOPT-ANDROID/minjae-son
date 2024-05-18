@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.RecyclerView
 import com.sopt.now.R
 import com.sopt.now.main.ResponseUserInfoDto
 import com.sopt.now.service.ServicePool
@@ -71,5 +72,15 @@ class HomeViewModel : ViewModel() {
                 Log.e("HomeViewModel", t.message.toString())
             }
         })
+    }
+    fun updateUserProfileUI(view: RecyclerView, it: HomeData.UserProfile) {
+        val adapter = view.adapter as? HomeViewAdapter
+        adapter?.setUserProfileList(it)
+    }
+
+
+    fun updateFriendProfilesUI(view: RecyclerView, it: List<HomeData.FriendProfile>) {
+        val adapter = view.adapter as? HomeViewAdapter
+        adapter?.setFriendProfileList(it)
     }
 }
