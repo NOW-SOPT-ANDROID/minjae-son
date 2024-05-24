@@ -25,6 +25,7 @@ class HomeViewModel : ViewModel() {
     private val userService by lazy { ServicePool.userService }
     private val friendService by lazy { ServicePool.friendService }
 
+    // 서버 통신 로직
     fun fetchUserInfo(userId: Int) {
         userService.getUserInfo(userId).enqueue(object : Callback<ResponseUserInfoDto> {
             override fun onResponse(
@@ -49,6 +50,7 @@ class HomeViewModel : ViewModel() {
         })
     }
 
+    // 서버 통신 로직
     fun fetchFriendsInfo() {
         friendService.getFriendsInfo(2).enqueue(object : Callback<ResponseFriendsInfoDto> {
             override fun onResponse(
