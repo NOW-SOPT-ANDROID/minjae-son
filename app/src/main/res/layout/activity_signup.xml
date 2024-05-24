@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <TextView
         android:id="@+id/tvSignUpTitle"
         android:layout_width="wrap_content"
@@ -79,25 +78,24 @@
         app:layout_constraintTop_toBottomOf="@+id/tvSignUpName" />
 
     <TextView
-        android:id="@+id/tvSignUpPlace"
+        android:id="@+id/tvSignUpPhoneNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        android:text="@string/tv_SignUp_Place"
+        android:text="@string/tv_SignUp_PhoneNumber"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etSignUpName" />
 
     <EditText
-        android:id="@+id/etSignUpPlace"
+        android:id="@+id/etSignUpPhoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
-        android:hint="@string/et_SignUp_Place"
-        app:layout_constraintTop_toBottomOf="@+id/tvSignUpPlace" />
-
+        android:hint="@string/et_SignUp_PhoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/tvSignUpPhoneNumber" />
 
     <Button
         android:id="@+id/btnSignUpSignUp"

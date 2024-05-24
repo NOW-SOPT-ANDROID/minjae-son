@@ -1,4 +1,4 @@
-package com.sopt.now.searchFragment
+package com.sopt.now.main.searchFragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,7 @@ class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
     private val binding
         get() = requireNotNull(_binding) {
-            "바인딩 객체 생성 해라"
+            "바인딩 객체를 생성해야 합니다."
         }
 
     override fun onCreateView(

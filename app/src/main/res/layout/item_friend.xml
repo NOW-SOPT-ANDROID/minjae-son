@@ -1,6 +1,5 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/Friend"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -36,30 +35,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="이름"
+            android:text="@string/tv_Item_Friend_Name"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/ivFriendProfile"
             app:layout_constraintTop_toTopOf="@+id/ivFriendProfile" />
 
         <TextView
-            android:id="@+id/tvFriendPlace"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="거주지"
-            android:textAllCaps="false"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/tvFriendName"
-            app:layout_constraintStart_toEndOf="@+id/tvFriendName"
-            app:layout_constraintTop_toTopOf="@+id/tvFriendName" />
-
-        <TextView
             android:id="@+id/tvFriendSelfDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="자기소개"
+            android:text="@string/tv_Item_Friend_AuthenticationId"
             app:layout_constraintBottom_toBottomOf="@+id/ivFriendProfile"
             app:layout_constraintStart_toEndOf="@+id/ivFriendProfile" />
     </androidx.constraintlayout.widget.ConstraintLayout>

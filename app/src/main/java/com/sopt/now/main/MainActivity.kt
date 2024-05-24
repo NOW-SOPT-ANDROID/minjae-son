@@ -1,13 +1,14 @@
-package com.sopt.now.activity
+package com.sopt.now.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.sopt.now.homeFragment.HomeFragment
-import com.sopt.now.myPageFragment.MyPageFragment
 import com.sopt.now.R
-import com.sopt.now.searchFragment.SearchFragment
 import com.sopt.now.databinding.ActivityMainBinding
+import com.sopt.now.main.homeFragment.HomeFragment
+import com.sopt.now.main.myPageFragment.MyPageFragment
+import com.sopt.now.main.searchFragment.SearchFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -16,10 +17,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val userId = intent.getStringExtra("ID")
-        val userPw = intent.getStringExtra("PW")
-        val userName = intent.getStringExtra("Name")
-        val userPlace = intent.getStringExtra("Place")
+        val memberId = intent.getStringExtra("memberId")
+        Log.e("MainActivity", "memberId: ${memberId}")
 
         val currentFragment = supportFragmentManager.findFragmentById(binding.fcvMain.id)
         if (currentFragment == null) {
@@ -27,20 +26,15 @@ class MainActivity : AppCompatActivity() {
                 .add(binding.fcvMain.id, HomeFragment())
                 .commit()
         }
-        clickBottomNavigation(userId,userPw,userName,userPlace)
+        clickBottomNavigation(memberId)
     }
 
-    private fun clickBottomNavigation(userId:String?,userPw:String?,userName:String?,userPlace:String?) {
+    private fun clickBottomNavigation(memberId: String?) {
         binding.bnvMain.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_home -> {
-                    val homeFragment = HomeFragment().apply {
-                        arguments = Bundle().apply {
-                            putString("Name", userName)
-                            putString("Place", userPlace)
-                        }
-                    }
-                    replaceFragment(HomeFragment())
+                    val homeFragment = HomeFragment.newInstance(memberId)
+                    replaceFragment(homeFragment)
                     true
                 }
 
@@ -50,14 +44,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.menu_mypage -> {
-                    val myPageFragment = MyPageFragment().apply {
-                        arguments = Bundle().apply {
-                            putString("ID", userId)
-                            putString("PW", userPw)
-                            putString("Name", userName)
-                            putString("Place", userPlace)
-                        }
-                    }
+                    val myPageFragment = MyPageFragment.newInstance(memberId)
                     replaceFragment(myPageFragment)
                     true
                 }
