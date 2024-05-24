@@ -1,4 +1,4 @@
-package com.sopt.now.compose.home
+package com.sopt.now.compose.main.home
 
 import com.sopt.now.compose.R
 

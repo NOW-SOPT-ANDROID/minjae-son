@@ -1,4 +1,4 @@
-package com.sopt.now.compose.mypage
+package com.sopt.now.compose.main.mypage
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

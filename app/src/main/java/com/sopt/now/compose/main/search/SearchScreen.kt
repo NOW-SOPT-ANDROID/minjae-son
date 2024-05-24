@@ -1,4 +1,4 @@
-package com.sopt.now.compose.search
+package com.sopt.now.compose.main.search
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

@@ -26,9 +26,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import com.sopt.now.compose.home.HomeScreen
-import com.sopt.now.compose.mypage.MyPageScreen
-import com.sopt.now.compose.search.SearchScreen
+import com.sopt.now.compose.main.home.HomeScreen
+import com.sopt.now.compose.main.mypage.MyPageScreen
+import com.sopt.now.compose.main.search.SearchScreen
 
 data class BottomNavigationItem(
     val icon: ImageVector,
