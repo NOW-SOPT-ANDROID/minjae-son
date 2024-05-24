@@ -11,3 +11,5 @@ val myProfile = Profiles.MyProfile(
     selfDescription = "I can do it",
     enable = true
 )
+
+val friendProfile = Profiles.FriendProfile ()
