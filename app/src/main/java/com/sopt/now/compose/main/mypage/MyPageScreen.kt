@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.sp
 import com.sopt.now.compose.R
 
 @Composable
-fun MyPageScreen(ID: String, PW: String, Name: String, Place: String) {
+fun MyPageScreen(id: String, pw: String, name: String, place: String) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -33,13 +33,13 @@ fun MyPageScreen(ID: String, PW: String, Name: String, Place: String) {
             modifier = Modifier.size(300.dp)
         )
         MyPageText(text = stringResource(R.string.txt_MyPage_Title))
-        MyPageText(text = Name)
+        MyPageText(text = name)
         MyPageText(text = stringResource(R.string.txt_MyPage_Id))
-        MyPageText(text = ID)
+        MyPageText(text = id)
         MyPageText(text = stringResource(R.string.txt_MyPage_Pw))
-        MyPageText(text = PW)
+        MyPageText(text = pw)
         MyPageText(text = stringResource(R.string.txt_MyPage_Place))
-        MyPageText(text = Place)
+        MyPageText(text = place)
     }
 }
 

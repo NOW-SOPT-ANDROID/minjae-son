@@ -48,10 +48,10 @@ fun SignUpScreen(navController: NavController) {
         verticalArrangement = Arrangement.Top
     ) {
 
-        var ID by remember { mutableStateOf("") }
-        var PW by remember { mutableStateOf("") }
-        var Name by remember { mutableStateOf("") }
-        var Place by remember { mutableStateOf("") }
+        var id by remember { mutableStateOf("") }
+        var pw by remember { mutableStateOf("") }
+        var name by remember { mutableStateOf("") }
+        var place by remember { mutableStateOf("") }
         var isIDValid by remember { mutableStateOf(false) }
         var isPWValid by remember { mutableStateOf(false) }
         var isNameValid by remember { mutableStateOf(false) }
@@ -72,9 +72,9 @@ fun SignUpScreen(navController: NavController) {
         )
 
         SignUpTextField(
-            ID,
+            id,
             { newID ->
-                ID = newID
+                id = newID
                 isIDValid = newID.trim().length in MIN_ID_LENGTH..MAX_ID_LENGTH
             },
             stringResource(R.string.tf_SignUp_ID_Hint),
@@ -82,9 +82,9 @@ fun SignUpScreen(navController: NavController) {
         )
 
         SignUpTextField(
-            PW,
+            pw,
             { newPW ->
-                PW = newPW
+                pw = newPW
                 isPWValid = newPW.trim().length in MIN_PW_LENGTH..MAX_PW_LENGTH
             },
             stringResource(R.string.tf_SignUp_PW_Hint),
@@ -93,9 +93,9 @@ fun SignUpScreen(navController: NavController) {
         )
 
         SignUpTextField(
-            Name,
+            name,
             { newName ->
-                Name = newName
+                name = newName
                 isNameValid = newName.trim().isNotEmpty()
             },
             stringResource(R.string.tf_SignUp_Name_Hint),
@@ -103,8 +103,8 @@ fun SignUpScreen(navController: NavController) {
         )
 
         SignUpTextField(
-            Place,
-            { newPlace -> Place = newPlace },
+            place,
+            { newPlace -> place = newPlace },
             stringResource(R.string.tf_SignUp_Place_Hint),
             Icons.Filled.Home
         )
@@ -114,9 +114,9 @@ fun SignUpScreen(navController: NavController) {
             {
                 isSignUpValid(
                     navController, context,
-                    ID, isIDValid,
-                    PW, isPWValid,
-                    Name, isNameValid, Place
+                    id, isIDValid,
+                    pw, isPWValid,
+                    name, isNameValid, place
                 )
             },
             true
