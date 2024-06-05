@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val memberId = intent.getStringExtra("memberId")
+        val memberId : String = intent.getStringExtra("memberId")
         Log.e("MainActivity", "memberId: ${memberId}")
 
         val currentFragment = supportFragmentManager.findFragmentById(binding.fcvMain.id)
