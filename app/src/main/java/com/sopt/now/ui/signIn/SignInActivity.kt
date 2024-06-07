@@ -34,11 +34,10 @@ class SignInActivity : AppCompatActivity() {
 
     private fun initObserver() {
         viewModel.liveData.observe(this) {
-            signInState ->
-            Toast.makeText(this,signInState.message,Toast.LENGTH_SHORT).show()
-            if(signInState.isSuccess) {
+            showToast(it.message)
+            if(it.isSuccess) {
                 val intent = Intent(this@SignInActivity, MainActivity::class.java).apply{
-                    signInState.memberId?.let { memberId -> putExtra("memberId",memberId) }
+                    it.memberId?.let { memberId -> putExtra("memberId",memberId) }
                 }
                 startActivity(intent)
             }
@@ -52,5 +51,9 @@ class SignInActivity : AppCompatActivity() {
             authenticationId = id,
             password = password,
         )
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }
