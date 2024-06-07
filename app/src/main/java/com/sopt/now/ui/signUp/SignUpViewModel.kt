@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sopt.now.data.request.RequestSignUpDto
 import com.sopt.now.data.di.ServicePool
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class SignUpViewModel : ViewModel() {
-    private val authService by lazy { ServicePool.authService }
     val liveData = MutableLiveData<SignUpState>()
 
     private val _navigateToSignIn = MutableLiveData<Boolean>()
@@ -17,9 +17,9 @@ class SignUpViewModel : ViewModel() {
         get() = _navigateToSignIn
 
     fun signUp(request: RequestSignUpDto) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             runCatching {
-                authService.signUp(request)
+                ServicePool.authService.signUp(request)
             }.onSuccess {
                 liveData.value = SignUpState(true, "회원가입 성공")
                 moveToSignInActivity()
