@@ -30,7 +30,7 @@ class MyPageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val memberId: String? = activity?.intent?.getStringExtra("memberId") ?: "0"
+        val memberId: String = activity?.intent?.getStringExtra("memberId") ?: "0"
         fetchUserInfo(memberId)
         observeUserInfo()
     }
