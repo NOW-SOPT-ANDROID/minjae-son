@@ -8,7 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.sopt.now.data.request.RequestSignUpDto
 import com.sopt.now.databinding.ActivitySignupBinding
 import com.sopt.now.ui.signIn.SignInActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignUpActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivitySignupBinding.inflate(layoutInflater) }

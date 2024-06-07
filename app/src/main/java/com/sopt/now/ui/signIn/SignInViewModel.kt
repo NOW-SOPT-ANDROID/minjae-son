@@ -4,12 +4,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sopt.now.data.repository.AuthRepository
 import com.sopt.now.data.request.RequestSignInDto
-import com.sopt.now.data.di.ServicePool
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SignInViewModel : ViewModel() {
+@HiltViewModel
+class SignInViewModel
+@Inject constructor(
+    private val authRepository: AuthRepository
+) : ViewModel() {
     val liveData = MutableLiveData<SignInState>()
 
     private val _navigateToMain = MutableLiveData<Boolean>()
@@ -19,7 +25,7 @@ class SignInViewModel : ViewModel() {
     fun signIn(request: RequestSignInDto) {
         viewModelScope.launch(Dispatchers.IO) {
             runCatching {
-                ServicePool.authService.signIn(request).execute()
+                authRepository.signIn(request)
             }.onSuccess {
                 val memberId = it.headers()["location"]
                 liveData.value = SignInState(true, "로그인 성공! 유저의 ID는 $memberId 입니둥", memberId)

@@ -16,7 +16,7 @@ interface AuthService {
     ): Response<ResponseSignUpDto>
 
     @POST("member/login")
-    fun signIn(
+    suspend fun signIn(
         @Body request: RequestSignInDto,
-    ): Call<ResponseSignInDto>
+    ): Response<ResponseSignInDto>
 }

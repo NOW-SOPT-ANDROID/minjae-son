@@ -4,16 +4,22 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.RecyclerView
 import com.sopt.now.R
-import com.sopt.now.data.response.ResponseFriendsInfoDto
-import com.sopt.now.data.response.ResponseUserInfoDto
-import com.sopt.now.data.di.ServicePool
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.sopt.now.data.repository.FriendRepository
+import com.sopt.now.data.repository.UserRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HomeViewModel : ViewModel() {
+@HiltViewModel
+class HomeViewModel
+@Inject constructor(
+    private val userRepository: UserRepository,
+    private val friendRepository: FriendRepository,
+) : ViewModel() {
 
     private val _userInfo = MutableLiveData<HomeData.UserProfile?>()
     val userInfo: LiveData<HomeData.UserProfile?>
@@ -23,57 +29,45 @@ class HomeViewModel : ViewModel() {
     val friendsInfo: LiveData<List<HomeData.FriendProfile>?>
         get() = _friendsInfo
 
-    private val userService by lazy { ServicePool.userService }
-    private val friendService by lazy { ServicePool.friendService }
-
-    fun fetchUserInfo(userId: Int) {
-        userService.getUserInfo(userId).enqueue(object : Callback<ResponseUserInfoDto> {
-            override fun onResponse(
-                call: Call<ResponseUserInfoDto>,
-                response: Response<ResponseUserInfoDto>
-            ) {
-                if (response.isSuccessful) {
-                    val responseUserInfoDto = response.body()
-                    val userProfileInfo = responseUserInfoDto?.data?.let { userData ->
-                        HomeData.UserProfile(
-                            R.drawable.sonminjae_profile,
-                            userData.nickname,
-                            userData.phone,
-                            userData.authenticationId
-                        )
-                        }
-                    _userInfo.value = userProfileInfo
+    fun fetchUserInfo(memberId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            runCatching {
+                userRepository.getUserInfo(memberId)
+            }.onSuccess {
+                val responseUserInfoDto = it.body()
+                val userProfileInfo = responseUserInfoDto?.data?.let { userData ->
+                    HomeData.UserProfile(
+                        R.drawable.sonminjae_profile,
+                        userData.nickname,
+                        userData.phone,
+                        userData.authenticationId
+                    )
                 }
+                _userInfo.value = userProfileInfo
+            }.onFailure {
+                Log.e("HomeViewModel", it.message.toString())
             }
-            override fun onFailure(call: Call<ResponseUserInfoDto>, t: Throwable) {
-                Log.e("HomeViewModel", t.message.toString())
-            }
-        })
+        }
     }
 
     fun fetchFriendsInfo() {
-        friendService.getFriendsInfo(2).enqueue(object : Callback<ResponseFriendsInfoDto> {
-            override fun onResponse(
-                call: Call<ResponseFriendsInfoDto>,
-                response: Response<ResponseFriendsInfoDto>
-            ) {
-                if (response.isSuccessful) {
-                    val responseFriendsInfoDto = response.body()
-                    val friendProfiles = responseFriendsInfoDto?.data?.map { friendData ->
-                        HomeData.FriendProfile(
-                            friendData.avatar,
-                            "${friendData.firstName} ${friendData.lastName}",
-                            friendData.email
-                        )
-                    }
-                    _friendsInfo.postValue(friendProfiles)
+        viewModelScope.launch(Dispatchers.IO) {
+            runCatching {
+                friendRepository.getFriendsInfo(2)
+            }.onSuccess {
+                val responseFriendsInfoDto = it.body()
+                val friendProfiles = responseFriendsInfoDto?.data?.map { friendData ->
+                    HomeData.FriendProfile(
+                        friendData.avatar,
+                        "${friendData.firstName} ${friendData.lastName}",
+                        friendData.email
+                    )
                 }
+                _friendsInfo.postValue(friendProfiles)
+            }.onFailure {
+                Log.e("HomeViewModel", it.message.toString())
             }
-
-            override fun onFailure(call: Call<ResponseFriendsInfoDto>, t: Throwable) {
-                Log.e("HomeViewModel", t.message.toString())
-            }
-        })
+        }
     }
     fun updateUserProfileUI(view: RecyclerView, it: HomeData.UserProfile) {
         val adapter = view.adapter as? HomeViewAdapter

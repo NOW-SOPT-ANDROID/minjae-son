@@ -9,7 +9,9 @@ import com.sopt.now.databinding.ActivityMainBinding
 import com.sopt.now.ui.main.home.HomeFragment
 import com.sopt.now.ui.main.myPage.MyPageFragment
 import com.sopt.now.ui.main.search.SearchFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val memberId = intent.getStringExtra("memberId")
-        Log.e("MainActivity", "memberId: ${memberId}")
+        Log.e("MainActivity", "memberId: $memberId")
 
         val currentFragment = supportFragmentManager.findFragmentById(binding.fcvMain.id)
         if (currentFragment == null) {

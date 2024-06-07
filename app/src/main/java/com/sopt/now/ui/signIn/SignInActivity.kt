@@ -6,10 +6,12 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.sopt.now.data.request.RequestSignInDto
+import com.sopt.now.databinding.ActivitySigninBinding
 import com.sopt.now.ui.main.MainActivity
 import com.sopt.now.ui.signUp.SignUpActivity
-import com.sopt.now.databinding.ActivitySigninBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignInActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivitySigninBinding.inflate(layoutInflater) }
@@ -35,9 +37,9 @@ class SignInActivity : AppCompatActivity() {
     private fun initObserver() {
         viewModel.liveData.observe(this) {
             showToast(it.message)
-            if(it.isSuccess) {
-                val intent = Intent(this@SignInActivity, MainActivity::class.java).apply{
-                    it.memberId?.let { memberId -> putExtra("memberId",memberId) }
+            if (it.isSuccess) {
+                val intent = Intent(this@SignInActivity, MainActivity::class.java).apply {
+                    it.memberId?.let { memberId -> putExtra("memberId", memberId) }
                 }
                 startActivity(intent)
             }

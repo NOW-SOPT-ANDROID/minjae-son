@@ -18,17 +18,6 @@ class HomeFragment : Fragment() {
         }
     private val viewModel by viewModels<HomeViewModel>()
 
-    companion object {
-        fun newInstance(memberId: String?): HomeFragment {
-            val fragment = HomeFragment()
-            val args = Bundle().apply {
-                putString("memberId", memberId)
-            }
-            fragment.arguments = args
-            return fragment
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -41,11 +30,21 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val memberId = activity?.intent?.getStringExtra("memberId") ?: "0"
-        val homeProfiledAdapter = HomeViewAdapter()
+        fetchUserInfo(memberId)
+        fetchFriendsInfo()
+        observeInfoList()
+    }
 
-        viewModel.fetchUserInfo(memberId.toInt())
+    private fun fetchUserInfo(memberId: String?) {
+        viewModel.fetchUserInfo(memberId?.toInt() ?: 0)
+    }
+
+    private fun fetchFriendsInfo() {
         viewModel.fetchFriendsInfo()
+    }
 
+    private fun observeInfoList() {
+        val homeProfiledAdapter = HomeViewAdapter()
         binding.rvHomeFriendList.run {
             adapter = homeProfiledAdapter
             layoutManager = LinearLayoutManager(requireContext())
@@ -64,5 +63,16 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        fun newInstance(memberId: String?): HomeFragment {
+            val fragment = HomeFragment()
+            val args = Bundle().apply {
+                putString("memberId", memberId)
+            }
+            fragment.arguments = args
+            return fragment
+        }
     }
 }
