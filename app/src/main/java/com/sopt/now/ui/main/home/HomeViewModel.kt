@@ -69,6 +69,7 @@ class HomeViewModel
             }
         }
     }
+
     fun updateUserProfileUI(view: RecyclerView, it: HomeData.UserProfile) {
         val adapter = view.adapter as? HomeViewAdapter
         adapter?.setUserProfileList(it)

@@ -54,10 +54,10 @@ class HomeFragment : Fragment() {
             homeProfiledAdapter.setFriendProfileList(viewModel.friendsInfo.value)
 
             viewModel.userInfo.observe(viewLifecycleOwner, Observer { userProfile ->
-                userProfile?.let { viewModel.updateUserProfileUI(this,it) }
+                userProfile?.let { viewModel.updateUserProfileUI(this, it) }
             })
             viewModel.friendsInfo.observe(viewLifecycleOwner, Observer { friendProfiles ->
-                friendProfiles?.let { viewModel.updateFriendProfilesUI(this,it) }
+                friendProfiles?.let { viewModel.updateFriendProfilesUI(this, it) }
             })
         }
     }

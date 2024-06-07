@@ -5,7 +5,6 @@ import com.sopt.now.data.request.RequestSignUpDto
 import com.sopt.now.data.response.ResponseSignInDto
 import com.sopt.now.data.response.ResponseSignUpDto
 import com.sopt.now.data.service.AuthService
-import retrofit2.Call
 import retrofit2.Response
 import javax.inject.Inject
 import javax.inject.Singleton

@@ -5,7 +5,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
 import dagger.hilt.android.HiltAndroidApp
 
-@HiltAndroidApp // 여기!!
+@HiltAndroidApp
 class NowSopt : Application() {
     override fun onCreate() {
         super.onCreate()
