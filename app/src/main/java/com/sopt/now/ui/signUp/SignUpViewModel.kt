@@ -27,19 +27,19 @@ class SignUpViewModel
             runCatching {
                 authRepository.signUp(request)
             }.onSuccess {
-                liveData.value = SignUpState(true, "회원가입 성공")
+                liveData.postValue(SignUpState(true, "회원가입 성공"))
                 moveToSignInActivity()
             }.onFailure {
-                liveData.value = SignUpState(false, "회원가입 실패")
+                liveData.postValue(SignUpState(false, "회원가입 실패"))
             }
         }
     }
 
     private fun moveToSignInActivity() {
-        _navigateToSignIn.value = true
+        _navigateToSignIn.postValue(true)
     }
 
     fun doneNavigatingToSignIn() {
-        _navigateToSignIn.value = false
+        _navigateToSignIn.postValue(false)
     }
 }

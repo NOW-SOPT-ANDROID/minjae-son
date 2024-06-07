@@ -43,7 +43,7 @@ class HomeViewModel
                         userData.authenticationId
                     )
                 }
-                _userInfo.value = userProfileInfo
+                _userInfo.postValue(userProfileInfo)
             }.onFailure {
                 Log.e("HomeViewModel", it.message.toString())
             }

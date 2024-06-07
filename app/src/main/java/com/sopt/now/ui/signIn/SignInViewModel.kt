@@ -28,20 +28,20 @@ class SignInViewModel
                 authRepository.signIn(request)
             }.onSuccess {
                 val memberId = it.headers()["location"]
-                liveData.value = SignInState(true, "로그인 성공! 유저의 ID는 $memberId 입니둥", memberId)
+                liveData.postValue(SignInState(true, "로그인 성공! 유저의 ID는 $memberId 입니둥", memberId))
                 moveToMainActivity()
             }.onFailure {
                 val error = it.message
-                liveData.value = SignInState(false, "로그인 실패 $error", null)
+                liveData.postValue(SignInState(false, "로그인 실패 $error", null))
             }
         }
     }
 
     private fun moveToMainActivity() {
-        _navigateToMain.value = true
+        _navigateToMain.postValue(true)
     }
 
     fun doneNavigatingToSignIn() {
-        _navigateToMain.value = false
+        _navigateToMain.postValue(false)
     }
 }

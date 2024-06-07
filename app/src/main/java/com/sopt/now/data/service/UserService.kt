@@ -8,7 +8,7 @@ import retrofit2.http.Header
 
 interface UserService {
     @GET("member/info")
-    fun getUserInfo(
+    suspend fun getUserInfo(
         @Header("memberId") memberId: Int,
     ): Response<ResponseUserInfoDto>
 }
